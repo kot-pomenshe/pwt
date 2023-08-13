@@ -1,7 +1,7 @@
 import user from '$lib/server/models/user.js';
 import word from '$lib/server/models/word';
 
-export const prerender = true;
+export const prerender = "auto";
 
 export async function load({ locals, params }) {
 	if (locals.session) {

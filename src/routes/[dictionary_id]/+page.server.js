@@ -2,7 +2,7 @@
 // it so that it gets served as a static asset in production
 import trainings from '$lib/server/models/trainings';
 import word from '$lib/server/models/word';
-export const prerender = true;
+export const prerender = false;
 
 export async function load({ locals, params}) {
 	if (locals.session) {
