@@ -1,0 +1,31 @@
+<script>
+export let word;
+import { createEventDispatcher } from "svelte";
+const dispatch = createEventDispatcher();
+</script>
+
+<h1>Выберите ответ</h1>
+<div class="d-flex">
+	<div class="card" style="width: 18rem;">
+		<img src={`/` + word.path} class="card-img-top" alt="картинка к слову" />
+		<div class="card-body">
+			<h5 class="card-title">{word.name1}</h5>
+			<p class="card-text">[{word.transcription}]</p>
+			<button on:click={() => dispatch("remember")} class="btn btn-primary">Помню</button>
+			<button on:click={() => dispatch("dontremember")} class="btn btn-primary">Не помню</button>
+		</div>
+	</div>
+</div>
+
+<style>
+	h1 {
+		text-align: center;
+		margin-top: 5%;
+	}
+	.card {
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 5%;
+		margin-top: 1%;
+	}
+</style>
