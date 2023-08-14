@@ -19,15 +19,6 @@
 						<input type="text" class="form-control" id="word1" name="word" />
 						{#if form?.empty_word1}<p class="error">Введите слово</p>{/if}
 					</div>
-
-					<div>
-						<label for="word2" class="form-label">Перевод</label>
-						<input type="text" class="form-control" id="word2" name="translation" />
-						{#if form?.empty_word2}<p class="error">Введите слово</p>{/if}
-					</div>
-				</div>
-
-				<div class="inlb_right">
 					<div>
 						<label for="transcription" class="form-label">Транскрипция</label>
 						<input
@@ -36,6 +27,14 @@
 							id="transcription"
 							name="transcription"
 						/>
+					</div>
+				</div>
+
+				<div class="inlb_right">
+					<div>
+						<label for="word2" class="form-label">Перевод</label>
+						<input type="text" class="form-control" id="word2" name="translation" />
+						{#if form?.empty_word2}<p class="error">Введите слово</p>{/if}
 					</div>
 
 					<div>
@@ -95,11 +94,11 @@
 	.margin-l {
 		margin-right: 2rem;
 	}
-	@media(max-width:1000px){
-		.inlb_left{
+	@media (max-width: 1000px) {
+		.inlb_left {
 			width: 80vw;
 		}
-		.inlb_right{
+		.inlb_right {
 			width: 80vw;
 		}
 	}

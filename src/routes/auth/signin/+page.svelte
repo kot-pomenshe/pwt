@@ -31,8 +31,8 @@
 				{#if form?.wrong_password}<p class="error">Неверный пароль</p>{/if}
 			</div>
 			<div class="flex">
-				<div class="block marg-a">
-					<button type="submit" class="btn btn-primary">Войти</button>
+				<div class="block marg-a ">
+					<button type="submit" class="width10 btn btn-primary">Войти</button>
 				</div>
 			</div>
 		</form>
@@ -65,5 +65,8 @@
 	.btn{
 		width: 20rem;
 		margin-top: 1rem;
+	}
+	.width10{
+		width: 100%;
 	}
 </style>

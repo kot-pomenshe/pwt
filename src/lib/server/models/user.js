@@ -58,7 +58,9 @@ async function signin({ email, password }) {
 	const salt = HASH_SALT;
 	const hash = bcrypt.hashSync(password, salt);
 
-	if (rows.slice(0)[0].password != hash) throw new Error('wrong_password');
+	if (rows.slice(0)[0].password != hash) {
+		throw new Error('wrong_password');
+	}
 
 	const [rows1, fields2] = await pool.execute('SELECT user_id FROM `user` WHERE email = ?', [
 		email,
