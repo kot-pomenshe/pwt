@@ -4,7 +4,7 @@ import { DB_USER, DB_PASSWORD } from '$env/static/private';
 
 const config = {
 	host: '127.0.0.1',
-	port: 3306,
+	port: 8889,
 	user: DB_USER,
 	password: DB_PASSWORD,
 	database: 'personal_word_trainer',
