@@ -49,7 +49,7 @@
 			/>
 			<button class="btn btn-outline-success" type="submit"
 				><img
-					src="../../../node_modules\bootstrap-icons\icons\search.svg"
+					src="/icons/search.svg"
 					alt="Logo"
 					height="18"
 				/></button

@@ -150,7 +150,7 @@
 					/>
 					<button class="btn btn-outline-success" type="submit"
 						><img
-							src="../.././node_modules\bootstrap-icons\icons\search.svg"
+							src="/icons/search.svg"
 							alt="Logo"
 							height="18"
 						/></button
@@ -158,7 +158,7 @@
 				</form>
 				<a href="./add_word" class="btn btn-primary"
 					><img
-						src="../../node_modules\bootstrap-icons\icons\plus-lg.svg"
+						src="/icons/plus-lg.svg"
 						alt="Logo"
 						height="18"
 					/></a
@@ -178,14 +178,14 @@
 						<li class="list-group-item">
 							{#if word_each.has_studied}
 								<img
-									src="../../node_modules\bootstrap-icons\icons\check-circle-fill.svg"
+									src="/icons/check-circle-fill.svg"
 									alt="Logo"
 									width="30"
 									height="24"
 								/>
 							{:else}
 								<img
-									src="../../node_modules\bootstrap-icons\icons\circle.svg"
+									src="/icons/circle.svg"
 									alt="Logo"
 									width="30"
 									height="24"
@@ -194,7 +194,7 @@
 						</li>
 						<li class="list-group-item">
 							<img
-								src="../../node_modules\bootstrap-icons\icons\trash.svg"
+								src="/icons/trash.svg"
 								alt="Logo"
 								width="30"
 								height="24"

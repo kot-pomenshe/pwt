@@ -88,7 +88,7 @@
 
 		<a href="../update_word/{translation_id}" class="btn btn-primary"
 			><img
-				src="../../../node_modules\bootstrap-icons\icons\pencil-square.svg"
+				src="/icons/pencil-square.svg"
 				alt="Logo"
 				width="30"
 				height="24"
@@ -97,7 +97,7 @@
 
 		<button on:click={() => delete_word()} type="button" id="btn-submit-dict" class="btn btn-primary btn-red"
 			><img
-				src="../../../node_modules\bootstrap-icons\icons\trash.svg"
+				src="/icons/trash.svg"
 				alt="Logo"
 				width="30"
 				height="24"
