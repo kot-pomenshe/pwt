@@ -71,7 +71,7 @@
 									/>
 									<a href="./import_cathegory" class="btn btn-primary"
 										><img
-											src="../../node_modules\bootstrap-icons\icons\arrow-bar-down.svg"
+											src="/icons/arrow-bar-down.svg"
 											alt="Logo"
 											height="18"
 										/></a
@@ -79,7 +79,7 @@
 								</form>
 								<a href="./add_cathegory" class="btn btn-primary"
 									><img
-										src="../../node_modules\bootstrap-icons\icons\plus-lg.svg"
+										src="/icons/plus-lg.svg"
 										alt="Logo"
 										height="18"
 									/></a
@@ -121,7 +121,7 @@
 												class="nav-link"
 												href="./update_cathegory/{cathegory.cathegory_id}"
 												><img
-													src="../../node_modules\bootstrap-icons\icons\pencil-square.svg"
+													src="/icons/pencil-square.svg"
 													alt="Logo"
 													width="30"
 													height="24"
