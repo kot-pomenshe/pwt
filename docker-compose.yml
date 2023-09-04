@@ -3,12 +3,12 @@ services:
   
       
   main:
-    restart: unless-stopped
+    restart: always
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 80:3000
     environment:
       - ORIGIN=http://personal-word-trainer.ru
     extra_hosts:
