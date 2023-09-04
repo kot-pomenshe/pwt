@@ -6,7 +6,7 @@ import { uid } from 'uid';
 import { BASE_URL, HASH_SALT } from '$env/static/private';
 
 async function create({ login, password, email }) {
-	const salt = HASH_SALT;
+	const salt = '$2b$10$56wwTPr0VBcS7vzzhudBie';//HASH_SALT;
 	const hash = bcrypt.hashSync(password, salt);
 	await pool.query(
 		'INSERT INTO `user`(login, password, email) VALUES ' + `("${login}","${hash}","${email}")`,
@@ -55,7 +55,7 @@ async function signin({ email, password }) {
 		throw new Error('user_not_found');
 	}
 
-	const salt = HASH_SALT;
+	const salt = '$2b$10$56wwTPr0VBcS7vzzhudBie'; //HASH_SALT;
 	const hash = bcrypt.hashSync(password, salt);
 
 	if (rows.slice(0)[0].password != hash) {

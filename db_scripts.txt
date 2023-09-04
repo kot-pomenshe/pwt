@@ -2,56 +2,56 @@ CRATE DATABASE IF NOT EXISTS `personal_word_trainer`;
 
 USE `personal_word_trainer`;
 
-CREATE TABLE IF NOT EXISTS `Cathegory` (
+CREATE TABLE IF NOT EXISTS `cathegory` (
 	cathegory_id         INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	name                 CHAR(99) NOT NULL,
 	author               INTEGER NOT NULL,
 	dictionary_id        SMALLINT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Context` (
+CREATE TABLE IF NOT EXISTS `context` (
 	translation_id       INTEGER NOT NULL,
 	context_id           INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	context              CHAR(255) NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Dictionary` (
+CREATE TABLE IF NOT EXISTS `dictionary` (
 	dictionary_id        SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	name                 CHAR(18) NOT NULL,
 	id_language1         SMALLINT NOT NULL,
 	id_language2         SMALLINT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Language` (
+CREATE TABLE IF NOT EXISTS `language` (
 	language_id          SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	name                 CHAR(99) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Page` (
+CREATE TABLE IF NOT EXISTS `page` (
 	URL                  CHAR(255) NOT NULL PRIMARY KEY,
 	header               CHAR(255) NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Picture` (
+CREATE TABLE IF NOT EXISTS `picture` (
 	translation_id       INTEGER NOT NULL,
 	picture_id           INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	path                 CHAR(255) NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Picture_S` (
+CREATE TABLE IF NOT EXISTS `picture_s` (
 	URL                  CHAR(255) NOT NULL,
 	picture_id           SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	pictire_path         CHAR(255) NOT NULL,
 	alt                  CHAR(255) NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Text` (
+CREATE TABLE IF NOT EXISTS `text` (
 	URL                  CHAR(255) NOT NULL,
 	text_id              SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	text                 TEXT(8000) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Training` (
+CREATE TABLE IF NOT EXISTS `training` (
 	training_id          BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	date                 DATETIME NOT NULL,
 	result               CHAR(255) NULL,
@@ -59,41 +59,41 @@ CREATE TABLE IF NOT EXISTS `Training` (
 	dictionary_id              INTEGER NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Transcription` (
+CREATE TABLE IF NOT EXISTS `transcription` (
 	translation_id       INTEGER NOT NULL,
 	transcription_id     INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	transcription        CHAR(255) NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Translation` (
+CREATE TABLE IF NOT EXISTS `translation` (
 	translation_id       INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	dictionary_id        SMALLINT NOT NULL,
 	word1_id             INTEGER NOT NULL,
 	word2_id			INTEGER NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Translation_has_cathegory` (
+CREATE TABLE IF NOT EXISTS `translation_has_cathegory` (
 	cathegory_id         INTEGER NOT NULL,
 	translation_id       INTEGER NOT NULL,
 	PRIMARY KEY (cathegory_id,translation_id)
 );
 
 
-CREATE TABLE IF NOT EXISTS `User` (
+CREATE TABLE IF NOT EXISTS `user` (
 	user_id              INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	login                CHAR(18) NULL,
 	password             CHAR(255) NULL,
 	email                CHAR(255) NULL
 );
 
-CREATE TABLE IF NOT EXISTS `User_has_cathegory` (
+CREATE TABLE IF NOT EXISTS `user_has_cathegory` (
 	user_id              INTEGER NOT NULL,
 	cathegory_id         INTEGER NOT NULL,
 	PRIMARY KEY (user_id,cathegory_id)
 );
 
 
-CREATE TABLE IF NOT EXISTS `User_has_translation` (
+CREATE TABLE IF NOT EXISTS `user_has_translation` (
 	translation_id       INTEGER NOT NULL,
 	user_id              INTEGER NOT NULL,
 	trainings_amount     SMALLINT NULL,
@@ -104,69 +104,73 @@ CREATE TABLE IF NOT EXISTS `User_has_translation` (
 );
 
 
-CREATE TABLE IF NOT EXISTS `Word` (
+CREATE TABLE IF NOT EXISTS `word` (
 	word_id              INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	name                 CHAR(255) NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Activation`(
+CREATE TABLE IF NOT EXISTS `activation`(
 	uid                  CHAR(255) NOT NULL PRIMARY KEY,
 	user_id              INTEGER NOT NULL,
 	is_activate          boolean NULL
 );
 
-CREATE TABLE IF NOT EXISTS `User_has_dictionary`(
+CREATE TABLE IF NOT EXISTS `user_has_dictionary`(
 	user_id              INTEGER NOT NULL,
 	dictionary_id        SMALLINT NOT NULL,
 	PRIMARY KEY (user_id,dictionary_id)
 );
 
-ALTER TABLE `Cathegory`
-ADD FOREIGN KEY (author) REFERENCES `User` (user_id),
-ADD FOREIGN KEY (dictionary_id) REFERENCES `Dictionary` (dictionary_id);
+ALTER TABLE `cathegory`
+ADD FOREIGN KEY (author) REFERENCES `user` (user_id),
+ADD FOREIGN KEY (dictionary_id) REFERENCES `dictionary` (dictionary_id);
 
-ALTER TABLE `Context`
-ADD FOREIGN KEY (translation_id) REFERENCES `Translation` (translation_id);
+ALTER TABLE `context`
+ADD FOREIGN KEY (translation_id) REFERENCES `translation` (translation_id);
 
-ALTER TABLE `Dictionary`
-ADD FOREIGN KEY (id_language1) REFERENCES `Language` (language_id),
-ADD FOREIGN KEY (id_language2) REFERENCES `Language` (language_id);
+ALTER TABLE `dictionary`
+ADD FOREIGN KEY (id_language1) REFERENCES `language` (language_id),
+ADD FOREIGN KEY (id_language2) REFERENCES `language` (language_id);
 
-ALTER TABLE `Picture`
-ADD FOREIGN KEY (translation_id) REFERENCES `Translation` (translation_id);
+ALTER TABLE `picture`
+ADD FOREIGN KEY (translation_id) REFERENCES `translation` (translation_id);
 
-ALTER TABLE `Picture_S`
-ADD FOREIGN KEY (URL) REFERENCES `Page` (URL);
+ALTER TABLE `picture_s`
+ADD FOREIGN KEY (URL) REFERENCES `page` (URL);
 
-ALTER TABLE `Text`
-ADD FOREIGN KEY (URL) REFERENCES `Page` (URL);
+ALTER TABLE `text`
+ADD FOREIGN KEY (URL) REFERENCES `page` (URL);
 
-ALTER TABLE `Training`
-ADD FOREIGN KEY (user_id) REFERENCES `User` (user_id);
+ALTER TABLE `training`
+ADD FOREIGN KEY (user_id) REFERENCES `user` (user_id);
 
-ALTER TABLE `Transcription`
-ADD FOREIGN KEY (translation_id) REFERENCES `Translation` (translation_id);
+ALTER TABLE `transcription`
+ADD FOREIGN KEY (translation_id) REFERENCES `translation` (translation_id);
 
-ALTER TABLE `Translation`
-ADD FOREIGN KEY (dictionary_id) REFERENCES `Dictionary` (dictionary_id),
-ADD FOREIGN KEY (word1_id) REFERENCES `Word` (word_id),
-ADD FOREIGN KEY (word2_id) REFERENCES `Word` (word_id);
+ALTER TABLE `translation`
+ADD FOREIGN KEY (dictionary_id) REFERENCES `dictionary` (dictionary_id),
+ADD FOREIGN KEY (word1_id) REFERENCES `word` (word_id),
+ADD FOREIGN KEY (word2_id) REFERENCES `word` (word_id);
 
-ALTER TABLE `Translation_has_cathegory`
-ADD FOREIGN KEY (cathegory_id) REFERENCES `Cathegory` (cathegory_id),
-ADD FOREIGN KEY (translation_id) REFERENCES `Translation` (translation_id);
+ALTER TABLE `translation_has_cathegory`
+ADD FOREIGN KEY (cathegory_id) REFERENCES `cathegory` (cathegory_id),
+ADD FOREIGN KEY (translation_id) REFERENCES `translation` (translation_id);
 
-ALTER TABLE `User_has_cathegory`
-ADD FOREIGN KEY (user_id) REFERENCES `User` (user_id),
-ADD FOREIGN KEY (cathegory_id) REFERENCES `Cathegory` (cathegory_id);
+ALTER TABLE `user_has_cathegory`
+ADD FOREIGN KEY (user_id) REFERENCES `user` (user_id),
+ADD FOREIGN KEY (cathegory_id) REFERENCES `cathegory` (cathegory_id);
 
-ALTER TABLE `User_has_translation`
-ADD FOREIGN KEY (translation_id) REFERENCES `Translation` (translation_id),
-ADD FOREIGN KEY (user_id) REFERENCES `User` (user_id);
+ALTER TABLE `user_has_translation`
+ADD FOREIGN KEY (translation_id) REFERENCES `translation` (translation_id),
+ADD FOREIGN KEY (user_id) REFERENCES `user` (user_id);
 
-ALTER TABLE `Activation`
-ADD FOREIGN KEY (user_id) REFERENCES `User` (user_id);
+ALTER TABLE `activation`
+ADD FOREIGN KEY (user_id) REFERENCES `user` (user_id);
 
-ALTER TABLE `User_has_dictionary`
-ADD FOREIGN KEY (user_id) REFERENCES `User` (user_id) ON DELETE CASCADE,
-ADD FOREIGN KEY (dictionary_id) REFERENCES `Dictionary` (dictionary_id);
+ALTER TABLE `user_has_dictionary`
+ADD FOREIGN KEY (user_id) REFERENCES `user` (user_id) ON DELETE CASCADE,
+ADD FOREIGN KEY (dictionary_id) REFERENCES `dictionary` (dictionary_id);
+
+INSERT INTO `language`( `name`) VALUES ("English");
+INSERT INTO `language`( `name`) VALUES ("Russian");
+INSERT INTO `dictionary`(`name`, `id_language1`, `id_language2`) VALUES ("English -> Russian", "1", "2");
