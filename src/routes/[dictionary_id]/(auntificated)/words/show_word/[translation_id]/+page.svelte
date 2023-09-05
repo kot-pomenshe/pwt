@@ -40,7 +40,7 @@
 				<img
 					src={`/` + data.res.word_data.path}
 					class="rounded "
-					alt="main picture"
+					alt="Изображение"
 					height="180"
 				/>
 			</div>
@@ -89,7 +89,7 @@
 		<a href="../update_word/{translation_id}" class="btn btn-primary"
 			><img
 				src="/icons/pencil-square.svg"
-				alt="Logo"
+				alt="Редактировать"
 				width="30"
 				height="24"
 			/></a
@@ -98,7 +98,7 @@
 		<button on:click={() => delete_word()} type="button" id="btn-submit-dict" class="btn btn-primary btn-red"
 			><img
 				src="/icons/trash.svg"
-				alt="Logo"
+				alt="Удалить"
 				width="30"
 				height="24"
 			/></button

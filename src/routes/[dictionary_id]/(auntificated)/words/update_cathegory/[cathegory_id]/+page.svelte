@@ -50,7 +50,7 @@
 			<button class="btn btn-outline-success" type="submit"
 				><img
 					src="/icons/search.svg"
-					alt="Logo"
+					alt="Поиск"
 					height="18"
 				/></button
 			>

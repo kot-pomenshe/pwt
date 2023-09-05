@@ -72,7 +72,7 @@
 									<a href="./import_cathegory" class="btn btn-primary"
 										><img
 											src="/icons/arrow-bar-down.svg"
-											alt="Logo"
+											alt="Скачать"
 											height="18"
 										/></a
 									>
@@ -80,7 +80,7 @@
 								<a href="./add_cathegory" class="btn btn-primary"
 									><img
 										src="/icons/plus-lg.svg"
-										alt="Logo"
+										alt="+"
 										height="18"
 									/></a
 								>
@@ -122,7 +122,7 @@
 												href="./update_cathegory/{cathegory.cathegory_id}"
 												><img
 													src="/icons/pencil-square.svg"
-													alt="Logo"
+													alt="Редактировать"
 													width="30"
 													height="24"
 												/></a
@@ -151,7 +151,7 @@
 					<button class="btn btn-outline-success" type="submit"
 						><img
 							src="/icons/search.svg"
-							alt="Logo"
+							alt="Поиск"
 							height="18"
 						/></button
 					>
@@ -159,7 +159,7 @@
 				<a href="./add_word" class="btn btn-primary"
 					><img
 						src="/icons/plus-lg.svg"
-						alt="Logo"
+						alt="+"
 						height="18"
 					/></a
 				>
@@ -179,14 +179,14 @@
 							{#if word_each.has_studied}
 								<img
 									src="/icons/check-circle-fill.svg"
-									alt="Logo"
+									alt="Изучено"
 									width="30"
 									height="24"
 								/>
 							{:else}
 								<img
 									src="/icons/circle.svg"
-									alt="Logo"
+									alt="Не изучено"
 									width="30"
 									height="24"
 								/>
@@ -195,7 +195,7 @@
 						<li class="list-group-item">
 							<img
 								src="/icons/trash.svg"
-								alt="Logo"
+								alt="Удалить"
 								width="30"
 								height="24"
 							/>

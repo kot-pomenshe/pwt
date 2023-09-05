@@ -15,19 +15,19 @@
 			<h7 class="card-title">{word.context}.</h7>
 			{#if word.answer}
 			<img
-				src="../../node_modules\bootstrap-icons\icons\check-circle-fill.svg"
+				src="/icons/check-circle-fill.svg"
 				width="30"
 				height="24"
 				class="card-img-top"
-				alt="верно или нет иконка"
+				alt="верно"
 			/>
 			{:else}
 			<img
-				src="../../node_modules\bootstrap-icons\icons\x-circle-fill.svg"
+				src="/icons/x-circle-fill.svg"
 				width="30"
 				height="24"
 				class="card-img-top"
-				alt="верно или нет иконка"
+				alt="неверно"
 			/>
 			{/if}
 			<button on:click={() => dispatch('next')} class="btn btn-primary">Далее</button>
