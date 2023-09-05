@@ -16,14 +16,14 @@
 	}
 
 	function formatTime(d){
-	console.log(`было `,d);
+	//console.log(`было `,d);
 	const date = d.getDate().toString().padStart(2, "0");
 	const month = (d.getMonth() + 1).toString().padStart(2, "0");
 	const year = d.getFullYear();
 
 	const h = d.getHours().toString().padStart(2, "0");
 	const m = d.getMinutes().toString().padStart(2, "0");
-	console.log(`стало `, `${date}.${month}.${year}, ${h}:${m}`);
+	//console.log(`стало `, `${date}.${month}.${year}, ${h}:${m}`);
 	return `${date}.${month}.${year}, ${h}:${m}`
 }
 </script>
@@ -38,7 +38,7 @@
 		<div class="flex">
 			<div class="col-md-3">
 				<img
-					src={`/` + data.res.word_data.path}
+					src={data.res.word_data.picturepath}
 					class="rounded "
 					alt="Изображение"
 					height="180"

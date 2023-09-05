@@ -9,63 +9,48 @@ async function add_word({
 	context,
 	category,
 	picture_path,
-}) {
+}) { //проверяем, есть ли слово
 	const [rows0, fields0] = await pool.execute(' SELECT `name` FROM `word` WHERE `name` = ?', [
 		word,
-	]);
+	]); //если нет, добавляем слово
 	if (!rows0.length) {
 		await pool.execute('INSERT INTO `word` (`name`) VALUES (?)', [word]);
-	}
+	} //берём айди слова
 	const [rows00, fields00] = await pool.execute(
 		' SELECT `word_id` FROM `word` WHERE `name` = ?',
 		[word],
-	);
-	console.log(`rows: `, rows00);
+	); 
 	let word1_id = rows00[0].word_id;
-
+		//проверяем есть ли второе слово в базе
 	const [rows1, fields1] = await pool.execute(' SELECT `name` FROM `word` WHERE `name` = ?', [
 		translation,
-	]);
+	]); //если нет, то добавляем
 	if (!rows1.length) {
 		await pool.execute('INSERT INTO `word` (`name`) VALUES (?)', [translation]);
-	}
+	} //берём айди второго слова
 	const [rows11, fields11] = await pool.execute(
 		' SELECT `word_id` FROM `word` WHERE `name` = ?',
 		[translation],
 	);
 	let word2_id = rows11[0].word_id;
-
+		//берём айди перевода
 	const [rows2, fields2] = await pool.execute(
-		' SELECT `translation_id` FROM `translation` WHERE `word1_id` = ? AND `word2_id` = ? AND `dictionary_id` = ? ',
-		[word1_id, word2_id, current_dictionary],
+		'SELECT `translation_id` FROM `translation` WHERE `word1_id` = ? AND `word2_id` = ? AND `dictionary_id` = ? AND `transcription` = ? AND `context` = ? AND `picturepath` =  ?',
+		[word1_id, word2_id, current_dictionary, transcription, context, picture_path],
 	);
-
+		//создаём вариант перевода, если такого ещё не было
 	if (!rows2.length) {
 		await pool.execute(
-			'INSERT INTO `translation`(`dictionary_id`, `word1_id`, `word2_id`) VALUES (?,?,?)',
-			[current_dictionary, word1_id, word2_id],
+			'INSERT INTO `translation`(`dictionary_id`, `word1_id`, `word2_id`, `transcription`, `context`, `picturepath`) VALUES (?,?,?,?,?,?)',
+			[current_dictionary, word1_id, word2_id, transcription, context, picture_path],
 		);
 	}
-
+	//достаём айди варианта перевода
 	const [rows22, fields22] = await pool.execute(
-		' SELECT `translation_id` FROM `translation` WHERE `word1_id` = ? AND `word2_id` = ? AND `dictionary_id` = ? ',
-		[word1_id, word2_id, current_dictionary],
+		'SELECT `translation_id` FROM `translation` WHERE `word1_id` = ? AND `word2_id` = ? AND `dictionary_id` = ? AND `transcription` = ? AND `context` = ? AND `picturepath` =  ?',
+		[word1_id, word2_id, current_dictionary, transcription, context, picture_path],
 	);
 	let translation_id = rows22[0].translation_id;
-
-	await pool.execute(
-		'INSERT INTO `transcription`(`translation_id`, `transcription`) VALUES (?,?)',
-		[translation_id, transcription],
-	);
-	await pool.execute('INSERT INTO `context`(`translation_id`,`context`) VALUES (?,?)', [
-		translation_id,
-		context,
-	]);
-	await pool.execute('INSERT INTO `picture`(`translation_id`,`path`) VALUES (?,?)', [
-		translation_id,
-		picture_path,
-	]);
-
 	await pool.execute(
 		'INSERT INTO `user_has_translation`(`translation_id`, `user_id`, `trainings_amount`, `mistakes_amount`, `has_studied`) VALUES (?,?,"0","0","0")',
 		[translation_id, user_id],
@@ -225,7 +210,7 @@ async function get_dictionaries(user_id) {
 
 async function get_words(user_id, dictionary_id) {
 	const [rows0, fields0] = await pool.execute(
-		'SELECT `translation_id`, `has_studied`, `word1`.`name` AS word11, `word2`.`name` AS word12, `transcription` FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `transcription` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ? ORDER BY translation_id DESC',
+		'SELECT `translation_id`, `has_studied`, `word1`.`name` AS word11, `word2`.`name` AS word12, `translation`.`transcription` AS transcription FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ? ORDER BY translation_id DESC',
 		[user_id, dictionary_id],
 	);
 
@@ -243,7 +228,7 @@ async function get_words_of_cathegory(dictionary_id, cathegory_id) {
 
 async function get_words_with_cathegories(user_id, dictionary_id) {
 	const [rows0, fields0] = await pool.execute(
-		'SELECT `user_has_translation`.`translation_id`, `has_studied`, `word1`.`name` AS word11, `word2`.`name` AS word12, `transcription`, `translation_has_cathegory`.`cathegory_id` FROM `user_has_translation` INNER JOIN `translation` ON `translation`.`translation_id` = `user_has_translation`.`translation_id` INNER JOIN `transcription` ON `translation`.`translation_id` = `transcription`.`translation_id` INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` LEFT JOIN `translation_has_cathegory` ON `translation`.`translation_id` = `translation_has_cathegory`.`translation_id` WHERE `user_id` = ? AND `dictionary_id` = ? ORDER BY `user_has_translation`.`translation_id` DESC',
+		'SELECT `user_has_translation`.`translation_id`, `has_studied`, `word1`.`name` AS word11, `word2`.`name` AS word12, `transcription`, `translation_has_cathegory`.`cathegory_id` FROM `user_has_translation` INNER JOIN `translation` ON `translation`.`translation_id` = `user_has_translation`.`translation_id` INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` LEFT JOIN `translation_has_cathegory` ON `translation`.`translation_id` = `translation_has_cathegory`.`translation_id` WHERE `user_id` = ? AND `dictionary_id` = ? ORDER BY `user_has_translation`.`translation_id` DESC',
 		[user_id, dictionary_id],
 	);
 
@@ -275,7 +260,7 @@ async function insert_word_to_cathegory(translation_id, cathegory_id) {
 }
 
 async function delete_word_from_cathegory(translation_id, cathegory_id) {
-	console.log(`удаляем слово из категории `, translation_id, cathegory_id);
+	//console.log(`удаляем слово из категории `, translation_id, cathegory_id);
 	const [rows4, fields4] = await pool.execute(
 		'SELECT * FROM `translation_has_cathegory` WHERE `translation_id` = ? AND `cathegory_id` = ?',
 		[translation_id, cathegory_id],
@@ -291,7 +276,7 @@ async function delete_word_from_cathegory(translation_id, cathegory_id) {
 
 async function get_current_word(user_id, dictionary_id, translation_id) {
 	const [rows0, fields0] = await pool.execute(
-		'SELECT `has_studied`, `trainings_amount`, `mistakes_amount`, `last_training_time`,`word1`.`name` AS `word11`, `word2`.`name` AS `word12`, `transcription`, `context`, `path` FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `transcription` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` INNER JOIN `context` USING(translation_id) INNER JOIN `picture` USING(translation_id) WHERE `user_id` = ? AND `dictionary_id` = ? AND `translation_id` = ?',
+		'SELECT `has_studied`, `trainings_amount`, `mistakes_amount`, `last_training_time`,`word1`.`name` AS `word11`, `word2`.`name` AS `word12`, `transcription`, `context`, `picturepath` FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ? AND `translation_id` = ?',
 		[user_id, dictionary_id, translation_id],
 	);
 
