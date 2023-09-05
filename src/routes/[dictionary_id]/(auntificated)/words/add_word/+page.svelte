@@ -40,6 +40,7 @@
 					<div>
 						<label for="word1" class="form-label">Изображение</label>
 						<input class="form-control" type="file" id="formFile" name="avatar" />
+						<p>Добавление изображений временно ограничено</p>
 					</div>
 				</div>
 			</div>
