@@ -6,14 +6,14 @@ export async function POST({request, locals, cookies, params}) {
     
     let today = new Date();
     let training = await request.json();
-    console.log(`training: `, training);
+    //console.log(`training: `, training);
 
     let sum = 0;
     for (let i of training){
         if (i.answer) sum+=1;
     }
     let result = `${sum}/${training.length}`;
-    console.log(`result: `, result);
+    //console.log(`result: `, result);
 
     let date =  new Date().toISOString().slice(0, 19).replace('T', ' ');
    for(let tw of training){
