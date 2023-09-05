@@ -1,6 +1,7 @@
 <script>
 	import { words, cathegories } from '$lib/stores';
 	export let data;
+	import {goto} from '$app/navigation';
 	$words = data.words.word_data;
 	$cathegories = data.cathegories.cathegories;
 
@@ -28,6 +29,12 @@
 	$: filteredCathegory = filterCathegory(search_cathegory);
 
 	let current_cathegory = 'all';
+	
+	async function delete_word(translation_id) {
+		await fetch(window.location.href, 
+		{method: "DELETE", body: JSON.stringify(translation_id)});
+		goto(`../words/dictionary`);
+	}
 </script>
 
 <svelte:head>
@@ -193,12 +200,15 @@
 							{/if}
 						</li>
 						<li class="list-group-item">
-							<img
-								src="/icons/trash.svg"
-								alt="Удалить"
-								width="30"
-								height="24"
-							/>
+							<button on:click={() => delete_word(word_each.translation_id)} type="button" 
+								id="btn-submit-dict" class="btn btn-primary btn_white"
+								><img
+									src="/icons/trash_red.svg"
+									alt="Удалить"
+									width="30"
+									height="24"
+								/></button
+							>
 						</li>
 					</ul>
 				{/each}
@@ -242,7 +252,9 @@
 	.inlb_right {
 		float: right;
 	}
-
+	.btn_white {
+		background-color: #ffffff;
+	}
 	@media(max-width:1200px){
 		.fixed_li{
 			width: 12rem;

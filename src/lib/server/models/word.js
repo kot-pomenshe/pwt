@@ -50,12 +50,13 @@ async function add_word({
 		'SELECT `translation_id` FROM `translation` WHERE `word1_id` = ? AND `word2_id` = ? AND `dictionary_id` = ? AND `transcription` = ? AND `context` = ? AND `picturepath` =  ?',
 		[word1_id, word2_id, current_dictionary, transcription, context, picture_path],
 	);
-	let translation_id = rows22[0].translation_id;
+	if (!rows2.length) {
+		let translation_id = rows22[0].translation_id;
 	await pool.execute(
 		'INSERT INTO `user_has_translation`(`translation_id`, `user_id`, `trainings_amount`, `mistakes_amount`, `has_studied`) VALUES (?,?,"0","0","0")',
 		[translation_id, user_id],
 	);
-
+	}
 	return true;
 }
 
