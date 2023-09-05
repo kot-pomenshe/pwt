@@ -51,6 +51,6 @@ async function add_word({ cookies, request }) {
 		picture_path: url_path,
 	});
 	//let redirect_path = '../../' + current_dictionary + '/words/dictionary';
-	let redirect_path = './words/dictionary';
+	let redirect_path = '../words/dictionary';
 	throw redirect(303, redirect_path);
 }
