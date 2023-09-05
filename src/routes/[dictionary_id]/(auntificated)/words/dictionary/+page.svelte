@@ -218,48 +218,6 @@
 </section>
 
 <style>
-
-section {
-	background-color: #f0f0f0;
-	color: #009d9e;
-	nav-tabs-link-active-bg: #7cc1ac;
-	display: block;
-	padding: 70px 0 0 0px;
-}
-
-.card {
-	color: #161616;
-	background: #d5ece6;
-}
-
-.btn,
-.btn-primary {
-	--bs-btn-color: #f0f0f0;
-	--bs-btn-bg: #009d9e;
-	--bs-btn-border-color: #f0f0f0;
-}
-
-.btn:hover {
-    color: #161616;
-    background-color: #7cc1ac;;
-    border-color: #009d9e;
-}
-
-body {
-	background-color: #f0f0f0;
-}
-/* footer { 
-    position: absolute;
-    bottom: 0;
-    width: 80%;
-}*/
-
-@font-face {
-	font-family: 'Montserrat';
-	src: url('fonts\Montserrat-Black.ttf');
-}
-
-
 	h1 {
 		text-align: center;
 		padding: 0 0 20px 0;
