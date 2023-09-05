@@ -15,20 +15,20 @@
 			<h7 class="card-title">{word.context}</h7>
 			{#if word.answer}
 			<img
-				src="../../node_modules\bootstrap-icons\icons\check-circle-fill.svg"
+				src="/icons/check-circle-fill.svg"
 				width="30"
 				height="24"
 				class="card-img-top"
-				alt="верно или нет иконка"
+				alt="верно"
 			/>
 			<p class="card-text green">Ваш ответ: {word.selected_answer}</p>
 			{:else}
 			<img
-				src="../../node_modules\bootstrap-icons\icons\x-circle-fill.svg"
+				src="/icons/x-circle-fill.svg"
 				width="30"
 				height="24"
 				class="card-img-top"
-				alt="верно или нет иконка"
+				alt="неверно"
 			/>
 			<p class="card-text red">Ваш ответ: {word.selected_answer}</p>
 			{/if}

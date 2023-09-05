@@ -18,18 +18,18 @@
 					<li class="list-group-item fixed_li">{word.name1}</li>
 					<li class="list-group-item">
 						<img
-							src="../../node_modules\bootstrap-icons\icons\arrow-right.svg"
+							src="/icons/arrow-right.svg"
 							width="30"
 							height="24"
 							class="card-img-top"
-							alt="arrow"
+							alt="->"
 						/>
 					</li>
 					<li class="list-group-item fixed_li">{word.name2}</li>
 					{#if !word.answer}
 						<li class="list-group-item list-group-item-danger">
 							<img
-								src="../../node_modules\bootstrap-icons\icons\x-circle-fill.svg"
+								src="/icons/x-circle-fill.svg"
 								width="30"
 								height="24"
 								class="card-img-top"
@@ -40,7 +40,7 @@
 					{:else}
 						<li class="list-group-item list-group-item-success">
 							<img
-								src="../../node_modules\bootstrap-icons\icons\check-circle-fill.svg"
+								src="/icons/check-circle-fill.svg"
 								width="30"
 								height="24"
 								class="card-img-top"
