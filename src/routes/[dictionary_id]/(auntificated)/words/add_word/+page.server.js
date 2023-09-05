@@ -36,7 +36,7 @@ async function add_word({ cookies, request }) {
 	} else {
 		filename = 'placeholder_pic.jpg';
 	}
-	let url_path = `avatars/` + filename;
+	let url_path = `/avatars/` + filename;
 
 	let current_dictionary = data.get('dictionary_id');
 
@@ -51,6 +51,6 @@ async function add_word({ cookies, request }) {
 		picture_path: url_path,
 	});
 	//let redirect_path = '../../' + current_dictionary + '/words/dictionary';
-	let redirect_path = '../words/dictionary';
+	let redirect_path = '../dictionary';
 	throw redirect(303, redirect_path);
 }
