@@ -255,6 +255,16 @@
 	.btn_white {
 		background-color: #ffffff;
 	}
+	@media(max-width:1500px){
+		.fixed_li{
+			width: 12rem;
+			
+		}
+		.fixed_li3{
+			width: 39rem;
+			
+		}
+	}
 	@media(max-width:1200px){
 		.fixed_li{
 			width: 12rem;
