@@ -22,7 +22,7 @@ async function add_word({
 	); 
 	
 	let word1_id = rows00[0].word_id;
-	//console.log(`берём айди слова1`, word1_id);
+	console.log(`берём айди слова1`, word1_id);
 		//проверяем есть ли второе слово в базе
 	const [rows1, fields1] = await pool.execute(' SELECT `name` FROM `word` WHERE `name` = ?', [
 		translation,
@@ -35,13 +35,13 @@ async function add_word({
 		[translation],
 	);
 	let word2_id = rows11[0].word_id;
-	//console.log(`берём айди слова2`, word2_id);
+	console.log(`берём айди слова2`, word2_id);
 		//провеярем айди перевода
 	const [rows2, fields2] = await pool.execute(
 		'SELECT `translation_id` FROM `translation` WHERE `word1_id` = ? AND `word2_id` = ? AND `dictionary_id` = ? AND `transcription` = ? AND `context` = ? AND `picturepath` =  ?',
 		[word1_id, word2_id, current_dictionary, transcription, context, picture_path],
 	);
-	//console.log(`есть ли вариант перевода`, rows2);
+	console.log(`есть ли вариант перевода`, rows2);
 		//создаём вариант перевода, если такого ещё не было
 	if (!rows2.length) {
 		await pool.execute(
@@ -56,6 +56,7 @@ async function add_word({
 	);
 	if (rows22.length) {
 		let translation_id = rows22[0].translation_id;
+		console.log(`берём айди of the translation`, translation_id);
 	await pool.execute(
 		'INSERT INTO `user_has_translation`(`translation_id`, `user_id`, `trainings_amount`, `mistakes_amount`, `has_studied`) VALUES (?,?,"0","0","0")',
 		[translation_id, user_id],
