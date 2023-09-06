@@ -27,16 +27,18 @@ async function add_word({
 	const [rows1, fields1] = await pool.execute(' SELECT `name` FROM `word` WHERE `name` = ?', [
 		translation,
 	]); //если нет, то добавляем
-	console.log(`1`);
 	if (!rows1.length) {
+	console.log(`слова нет в базе, добавляем`);
 		await pool.execute('INSERT INTO `word` (`name`) VALUES (?)', [translation]);
 	} //берём айди второго слова
-	console.log(`2`);
+	console.log(`Добавили. Ищем то, что добавили или было`);
 	const [rows11, fields11] = await pool.execute(
-		' SELECT `word_id` FROM `word` WHERE `name` = ?',
+		'SELECT `word_id` FROM `word` WHERE `name` = ?',
 		[translation],
 	);
 	console.log(`3`, rows11);
+	console.log(`4`, rows11[0]);
+	console.log(`5`, rows11[0].word_id);
 	let word2_id = rows11[0].word_id;
 	console.log(`берём айди слова2`, word2_id);
 		//провеярем айди перевода
