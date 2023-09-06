@@ -95,7 +95,7 @@
 							<br />
 							<div class="form-check">
 								<ul class="list-group list-group-horizontal">
-									<li class="list-group-item fixed_li">
+									<li class="list-group-item fixed_li2">
 										<input
 											class="form-check-input"
 											type="radio"
@@ -111,7 +111,7 @@
 								</ul>
 								{#each filteredCathegory as cathegory}
 									<ul class="list-group list-group-horizontal">
-										<li class="list-group-item fixed_li">
+										<li class="list-group-item fixed_li2">
 											<input
 												class="form-check-input"
 												type="radio"
@@ -201,7 +201,7 @@
 						</li>
 						<li class="list-group-item">
 							<button on:click={() => delete_word(word_each.translation_id)} type="button" 
-								id="btn-submit-dict" class="btn btn-primary btn_white"
+								id="btn-submit-dict" class="btn btn-primary btn_white small_btn"
 								><img
 									src="/icons/trash_red.svg"
 									alt="Удалить"
@@ -275,8 +275,20 @@
 	}
 	@media(max-width:480px){
 		.fixed_li{
-			width: 61vw;
-			font-size: 5vw;
+			width: 19vw;
+			font-size: 4vw;
+		}
+		.fixed_li2{
+			width: 95vw;
+		}
+		.fixed_li3{
+			width: 70vw;
+		}
+		img{
+			height: 3vw;
+		}
+		.small_btn{
+			height: 10vw;
 		}
 	}
 </style>
