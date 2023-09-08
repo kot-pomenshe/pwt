@@ -21,9 +21,9 @@ export async function load({ locals, params }) {
         
 	for (let i of words) { //проходим по всему смешанному массиву
                 //console.log(`Проходим по всему смешанному массиву `, i);
-                console.log(`Есть ли в правильных: `, i.translation_id);
+                //console.log(`Есть ли в правильных: `, i.translation_id);
 		if (!translation_ids.has(i.translation_id)) { //если слова нет в правильных
-                        console.log(`Слова нет в правильных`, i.translation_id);
+                      //  console.log(`Слова нет в правильных`, i.translation_id);
 			translation_ids.add(i.translation_id); //добавляем в правильные
 			unique_words.push(i);//добавляем в уникальные
 		}

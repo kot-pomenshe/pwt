@@ -106,13 +106,14 @@ async function delete_word(user_id, translation_id) {
 
 async function add_user_has_cathegory({ user_id, cathegory_id }) {
 	const [rows00, fields00] = await pool.execute(
-		`SELECT * FROM user_has_cathegory WHERE user_id = ${user_id} AND user_id = ${user_id} AND cathegory_id = ${cathegory_id}`,
+		`SELECT * FROM user_has_cathegory WHERE user_id = ${user_id} AND cathegory_id = ${cathegory_id}`,
 	);
 	if (!rows00.length) {
 		await pool.execute(
 			'INSERT INTO `user_has_cathegory` (`user_id`, `cathegory_id`) VALUES (?,?)',
 			[user_id, cathegory_id],
 		);
+		console.log(`добавили пользователю категорию`, user_id, cathegory_id);
 	}
 	return true;
 }
@@ -230,10 +231,10 @@ async function get_words(user_id, dictionary_id) {
 
 async function get_words_of_cathegory(dictionary_id, cathegory_id) {
 	const [rows0, fields0] = await pool.execute(
-		'SELECT `user_has_translation`.`translation_id` as id FROM `user_has_translation` INNER JOIN `translation` ON `translation`.`translation_id` = `user_has_translation`.`translation_id` INNER JOIN `transcription` ON `translation`.`translation_id` = `transcription`.`translation_id` INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` LEFT JOIN `translation_has_cathegory` ON `translation`.`translation_id` = `translation_has_cathegory`.`translation_id` WHERE `dictionary_id` = ? AND `translation_has_cathegory`.`cathegory_id` = ? ORDER BY `user_has_translation`.`translation_id` DESC',
+		'SELECT `user_has_translation`.`translation_id` as id FROM `user_has_translation` INNER JOIN `translation` ON `translation`.`translation_id` = `user_has_translation`.`translation_id` INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` LEFT JOIN `translation_has_cathegory` ON `translation`.`translation_id` = `translation_has_cathegory`.`translation_id` WHERE `dictionary_id` = ? AND `translation_has_cathegory`.`cathegory_id` = ? ORDER BY `user_has_translation`.`translation_id` DESC',
 		[ dictionary_id, cathegory_id],
 	);
-		//console.log(`WORDS OF CATEGORY`, rows0);
+		console.log(`WORDS OF CATEGORY`, rows0);
 	return rows0 ;
 }
 
