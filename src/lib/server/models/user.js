@@ -1,5 +1,6 @@
 import { runQuery, pool } from '$lib/server/db';
 import { send_conf_email } from '$lib/server/mailer';
+import word from '$lib/server/models/word';
 import bcrypt from 'bcrypt';
 import { uid } from 'uid';
 
@@ -32,6 +33,9 @@ async function create({ login, password, email }) {
 		'INSERT INTO `user_has_dictionary`(`user_id`, `dictionary_id`) VALUES (?,?)',
 		[user_id, '1'],
 	);
+
+	const cathegory_id = 3;
+	word.add_user_has_cathegory({ user_id, cathegory_id });
 
 	const link = new URL(`auth/activation/${new_uid}`, BASE_URL).toString();
 
