@@ -12,6 +12,15 @@ import { BASE_URL, HASH_SALT } from '$env/static/private';
 async function create({ login, password, email }) {
 	const salt = '$2b$10$56wwTPr0VBcS7vzzhudBie';//HASH_SALT;
 	const hash = bcrypt.hashSync(password, salt);
+
+	//проверить, что такого пользователя не было
+	const [rows00, fields00] = await pool.query(
+		'SELECT user_id from `user` WHERE email = ' + `"${email}"`,
+	);
+	if(rows00){
+		throw new Error('email_already_regd');
+	}
+
 	await pool.query(
 		'INSERT INTO `user`(login, password, email) VALUES ' + `("${login}","${hash}","${email}")`,
 	);
@@ -40,6 +49,8 @@ async function create({ login, password, email }) {
 	const link = new URL(`auth/activation/${new_uid}`, BASE_URL).toString();
 
 	send_conf_email({ email, login, link });
+
+	return true;
 }
 
 async function activate({ uid }) {

@@ -24,7 +24,7 @@
 			<p class="card-text green">Ваш ответ: {word.selected_answer}</p>
 			{:else}
 			<img
-				src="./icons/x-circle-fill.svg"
+				src="/icons/x-circle-fill.svg"
 				width="30"
 				height="24"
 				class="card-img-top"

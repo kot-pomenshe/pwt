@@ -22,6 +22,7 @@
 				<div class="col-sm-10">
 					<input type="email" class="form-control" id="inputEmail3" name="email" />
 				</div>
+				{#if form?.email_already_regd}<p class="error">Данный email уже существует</p>{/if}
 			</div>
 			<div class="row mb-3">
 				<label for="inputPassword3" class="col-sm-2 col-form-label">Пароль</label>
