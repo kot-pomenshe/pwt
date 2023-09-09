@@ -37,7 +37,7 @@
 			</div>
 			<div class="row mb-3">
 				{#if form?.passw_different}
-					<label for="inputPassword3" class="col-sm-2 col-form-label"
+					<label for="inputPassword3" class="error col-sm-2 col-form-label"
 						>Пароли не совпадают</label
 					>
 				{:else}
@@ -45,7 +45,6 @@
 						>Повторите пароль</label
 					>
 				{/if}
-
 				<div class="col-sm-10">
 					<input
 						type="password"
@@ -54,6 +53,7 @@
 						name="password_repeat"
 					/>
 				</div>
+				{#if form?.field_is_empty}<p class="error">Не все поля заполнены</p>{/if}
 			</div>
 			<div class="flex">
 				<button type="submit" class="btn btn-primary">Зарегистрироваться</button>
@@ -90,5 +90,8 @@
 	a{
 		margin-left: auto;
 		margin-right: auto;
+	}
+	.error{
+		color: #8a307f;
 	}
 </style>

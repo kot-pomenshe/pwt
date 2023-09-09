@@ -305,7 +305,7 @@ async function get_current_dictionary(dictionary_id) {
 
 async function count_words({ user_id, dictionary_id }) {
 	const [rows0, fields0] = await pool.execute(
-		'SELECT COUNT(`word1`.`name`) AS num  FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `transcription` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ?',
+		'SELECT COUNT(`word1`.`name`) AS num  FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ?',
 		[user_id, dictionary_id],
 	);
 	let counted_words = rows0[0].num;
@@ -315,7 +315,7 @@ async function count_words({ user_id, dictionary_id }) {
 
 async function count_done_words({ user_id, dictionary_id }) {
 	const [rows0, fields0] = await pool.execute(
-		'SELECT COUNT(`word1`.`name`) as num FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `transcription` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ? AND `has_studied` = 1',
+		'SELECT COUNT(`word1`.`name`) as num FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ? AND `has_studied` = 1',
 		[user_id, dictionary_id],
 	);
 	let done_words = rows0[0].num;

@@ -4,7 +4,7 @@
 	let trainings_statistics = data.trainings_statistics;
 	let counted_words = data.counted_words.counted_words;
 	let done_words = data.done_words.done_words;
-	//console.log(`K D `, counted_words, ` D `, done_words);
+	console.log(`K D `, counted_words, ` D `, done_words);
 
 	function formatTime(d) {
 		const date = d.getDate().toString().padStart(2, '0');

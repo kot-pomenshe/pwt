@@ -20,22 +20,26 @@ async function signup({ cookies, request, url }) {
 	if (password !== password_repeat) {
 		return fail(400, { passw_different: true });
 	}
+
 	//проверить, если всё пусто
+	if (login == "" || email == "" || password =="" || password_repeat == "") {
+		return fail(400, { field_is_empty: true });
+	}
+
+
 	let error;
-	user.create({ login, password, email }).catch((e) => {
+	const create = await user.create({ login, password, email }).catch((e) => {
 		console.log(e.message, e.message == 'email_already_regd');
 		if (e.message == 'email_already_regd') {
 			error = fail(400, { email_already_regd: true });
+			return error;
 		}
 	});
-
-	if (error) {
-		console.log(`Error внутри эррора`);
-		return error;
-	}
-	else{
-		throw redirect(303, '/auth/signin');
-	}
-	
+	if(error) {
+		let error1 = error;
+		error = '';
+		return error1;
+	};
+	throw redirect(303, '/auth/signin');
 }
 
