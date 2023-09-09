@@ -8,7 +8,8 @@
 
 	let session = data.user_id;
 	let translation_id = data.translation_id;
-	
+	let cathegories_list = data.cathegories_list.cathegories_list;
+	console.log(`CATHEGORIES LIST `, cathegories_list);
 	async function delete_word() {
 		await fetch(window.location.href, 
 		{method: "DELETE"});
@@ -48,34 +49,36 @@
 			<div class="col-md-12">
 				<div class="flex">
 					<div class="col-md-4">
-						<h5>Слово</h5>
+						<h5 class="black_text">Слово</h5>
 						<h3>{data.res.word_data.word11}</h3>
 					</div>
 					<div class="col-md-1" />
 					<div class="col-md-4">
-						<h5>Перевод</h5>
+						<h5 class="black_text">Перевод</h5>
 						<h3>{data.res.word_data.word12}</h3>
 					</div>
 				</div>
 				<br />
 				<div class="flex">
 					<div class="col-md-4">
-						<h5>Транскрипция</h5>
+						<h5 class="black_text">Транскрипция</h5>
 						<h3>{data.res.word_data.transcription}</h3>
 					</div>
 					<div class="col-md-1" />
 					<div class="col-md-4">
-						<h2>Категории:</h2>
-						<p>Скоро</p>
-						<p>они</p>
-						<p>здесь</p>
-						<p>обязательно</p>
-						<p>будут</p>
+						<h5 class="black_text">Категории:</h5>
+						{#each cathegories_list as cathegory}
+										<li>
+											
+												{cathegory.name}
+											
+										</li>
+									{/each}
 					</div>
 				</div>
 
 				<div class="col-md-9">
-					<h5>Контекст</h5>
+					<h5 class="black_text">Контекст</h5>
 					<h3>{data.res.word_data.context}</h3>
 				</div>
 			</div>
@@ -117,5 +120,8 @@
 	}
 	.btn-red {
 		background-color: #8a307f;
+	}
+	.black_text{
+		color: #333333;
 	}
 </style>

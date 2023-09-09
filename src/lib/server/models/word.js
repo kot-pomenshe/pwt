@@ -322,6 +322,16 @@ async function count_done_words({ user_id, dictionary_id }) {
 	return { done_words };
 }
 
+async function get_cathegories_of_word({ user_id, translation_id }) {
+	const [rows0, fields0] = await pool.execute(
+		'SELECT `cathegory`.`name` FROM `translation_has_cathegory` INNER JOIN `cathegory` ON `translation_has_cathegory`.`cathegory_id` = `cathegory`.`cathegory_id` INNER JOIN `user_has_cathegory` ON `user_has_cathegory`.`cathegory_id` = `cathegory`.`cathegory_id` WHERE `translation_id` = ? AND `user_id` = ?',
+		[translation_id, user_id],
+	);
+	let cathegories_list = rows0;
+	
+	return { cathegories_list };
+}
+
 export default {
 	add_word,
 	get_dictionaries,
@@ -342,4 +352,5 @@ export default {
 	import_translation,
 	check_dictionary,
 	add_user_has_cathegory,
+	get_cathegories_of_word,
 };
