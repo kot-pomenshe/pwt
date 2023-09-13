@@ -9,26 +9,17 @@
 	let avatar_path = '';
 	console.log(`BASE 64 STRING 1 : `,base64String);
 	async function imageUploaded() {
-		console.log(`BASE 64 STRING 2 : `,base64String);
 		let file = document.querySelector('input[type=file]')['files'][0];
-		console.log(`BASE 64 STRING 3 : `,base64String);
 		let reader = new FileReader();
-		console.log(`BASE 64 STRING 4 : `,base64String);
 		reader.onload = async function () {
-			console.log(`BASE 64 STRING 5 : `,base64String);
-			base64String = reader.result.replace('data:', '').replace(/^.+,/, '');
-			console.log(`BASE 64 STRING 6 : `,base64String);
+			base64String = reader.result;
+			//avatar_path = 'data:image/jpg;base64,' + base64String;
 			avatar_path = base64String;
 			/*await fetch(window.location.href, 
 			{method: "POST", body: JSON.stringify({base64String})});
 			goto(`../words/add_word`);*/
 		};
-		console.log(`BASE 64 STRING 7 : `,base64String);
-		reader.readAsDataURL(file);
-		console.log(`BASE 64 STRING 8 : `,base64String);
-		
-		
-		console.log(`BASE 64 STRING 9: `,base64String);
+		reader.readAsDataURL(file);		
 		return base64String;
 	}
 

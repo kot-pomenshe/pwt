@@ -5,7 +5,8 @@
 
 	export let data;
 
-	let picturepath = 'data:image/jpg;base64,' + data.res.word_data.picturepath;
+	//let picturepath = 'data:image/jpg;base64,' + data.res.word_data.picturepath;
+	let picturepath = data.res.word_data.picturepath;
 
 	let session = data.user_id;
 	let translation_id = data.translation_id;
