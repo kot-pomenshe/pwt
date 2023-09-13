@@ -58,10 +58,7 @@
 						{#if form?.empty_word2}<p class="error">Введите слово</p>{/if}
 					</div>
 					
-					<div>
-						<label for="word1" class="form-label">Изображение</label>
-						<input class="form-control" type="file" name="avatar" id="fileId" on:change={imageUploaded}  />
-					</div>
+					
 					<div class="invisible">
 						<input type="text" name="avatar_path" id="avatar_path" bind:value={avatar_path}  />
 					</div>
@@ -84,6 +81,10 @@
 				<button type="submit" class="btn btn-primary">Добавить</button>
 			</div>
 		</form>
+		<div>
+			<label for="word1" class="form-label">Изображение</label>
+			<input class="form-control" type="file" name="avatar" id="fileId" on:change={imageUploaded}  />
+		</div>
 	</div>
 </section>
 
