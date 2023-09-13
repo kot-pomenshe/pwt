@@ -10,6 +10,17 @@ export const actions = {
 	add_word,
 };
 
+/*async function imageUploaded(avatar) {
+	let base64String = '';
+	let file = avatar;
+	let reader = new FileReader();
+	reader.onload = function () {
+		base64String = reader.result.replace('data:', '').replace(/^.+,/, '');
+	};
+	reader.readAsDataURL(file);
+	return base64String;
+}*/
+
 // @ts-ignore
 async function add_word({ cookies, request }) {
 	const data = await request.formData();
@@ -27,16 +38,16 @@ async function add_word({ cookies, request }) {
 		return fail(400, { empty_word2: true });
 	}
 
-	const avatar = data.get('avatar');
-	let filename;
-	if (avatar.name != 'undefined') {
-		filename = `${crypto.randomUUID()}.${avatar.type.split('/')[1]}`;
-		const picture_path = path.join(process.cwd(), 'static', 'avatars', filename);
-		await fs.writeFile(picture_path, Buffer.from(await avatar.arrayBuffer()));
+	const avatar = data.get('avatar_path');
+	console.log(`AVATAR PATH: `, avatar);
+	let filename = 'placeholder_pic.jpg';
+
+	if (avatar != 'undefined') {
+		filename = avatar;
 	} else {
 		filename = 'placeholder_pic.jpg';
 	}
-	let url_path = `/avatars/` + filename;
+	let url_path = filename;
 
 	let current_dictionary = data.get('dictionary_id');
 

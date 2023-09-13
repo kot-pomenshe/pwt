@@ -1,32 +1,32 @@
 <script>
-	import {goto, preloadData} from '$app/navigation';
+	import { goto, preloadData } from '$app/navigation';
 	import { dictionary } from '$lib/stores';
 	import { page } from '$app/stores';
 
-
 	export let data;
+
+	let picturepath = 'data:image/jpg;base64,' + data.res.word_data.picturepath;
 
 	let session = data.user_id;
 	let translation_id = data.translation_id;
 	let cathegories_list = data.cathegories_list.cathegories_list;
 	console.log(`CATHEGORIES LIST `, cathegories_list);
 	async function delete_word() {
-		await fetch(window.location.href, 
-		{method: "DELETE"});
+		await fetch(window.location.href, { method: 'DELETE' });
 		goto(`../dictionary`);
 	}
 
-	function formatTime(d){
-	//console.log(`было `,d);
-	const date = d.getDate().toString().padStart(2, "0");
-	const month = (d.getMonth() + 1).toString().padStart(2, "0");
-	const year = d.getFullYear();
+	function formatTime(d) {
+		//console.log(`было `,d);
+		const date = d.getDate().toString().padStart(2, '0');
+		const month = (d.getMonth() + 1).toString().padStart(2, '0');
+		const year = d.getFullYear();
 
-	const h = d.getHours().toString().padStart(2, "0");
-	const m = d.getMinutes().toString().padStart(2, "0");
-	//console.log(`стало `, `${date}.${month}.${year}, ${h}:${m}`);
-	return `${date}.${month}.${year}, ${h}:${m}`
-}
+		const h = d.getHours().toString().padStart(2, '0');
+		const m = d.getMinutes().toString().padStart(2, '0');
+		//console.log(`стало `, `${date}.${month}.${year}, ${h}:${m}`);
+		return `${date}.${month}.${year}, ${h}:${m}`;
+	}
 </script>
 
 <svelte:head>
@@ -39,7 +39,7 @@
 		<div class="flex">
 			<div class="col-md-3">
 				<img
-					src={data.res.word_data.picturepath}
+					src={picturepath}
 					class="rounded "
 					alt="Изображение"
 					height="180"
@@ -68,12 +68,10 @@
 					<div class="col-md-4">
 						<h5 class="black_text">Категории:</h5>
 						{#each cathegories_list as cathegory}
-										<li>
-											
-												{cathegory.name}
-											
-										</li>
-									{/each}
+							<li>
+								{cathegory.name}
+							</li>
+						{/each}
 					</div>
 				</div>
 
@@ -85,26 +83,20 @@
 		</div>
 		<h6>Изучено: {data.res.word_data.trainings_amount}</h6>
 		<h6>Ошибок: {data.res.word_data.mistakes_amount}</h6>
-		{#if (data.res.word_data.last_training_time)}
-		<h6>Дата последней тренировки: {formatTime(data.res.word_data.last_training_time)}</h6>
+		{#if data.res.word_data.last_training_time}
+			<h6>Дата последней тренировки: {formatTime(data.res.word_data.last_training_time)}</h6>
 		{/if}
 
 		<a href="../update_word/{translation_id}" class="btn btn-primary"
-			><img
-				src="/icons/pencil-square.svg"
-				alt="Редактировать"
-				width="30"
-				height="24"
-			/></a
+			><img src="/icons/pencil-square.svg" alt="Редактировать" width="30" height="24" /></a
 		>
 
-		<button on:click={() => delete_word()} type="button" id="btn-submit-dict" class="btn btn-primary btn-red"
-			><img
-				src="/icons/trash.svg"
-				alt="Удалить"
-				width="30"
-				height="24"
-			/></button
+		<button
+			on:click={() => delete_word()}
+			type="button"
+			id="btn-submit-dict"
+			class="btn btn-primary btn-red"
+			><img src="/icons/trash.svg" alt="Удалить" width="30" height="24" /></button
 		>
 	</div>
 </section>
@@ -121,7 +113,7 @@
 	.btn-red {
 		background-color: #8a307f;
 	}
-	.black_text{
+	.black_text {
 		color: #333333;
 	}
 </style>

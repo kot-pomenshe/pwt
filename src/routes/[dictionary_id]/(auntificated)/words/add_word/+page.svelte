@@ -2,6 +2,36 @@
 	import { dictionary } from '$lib/stores';
 	export let data;
 	export let form;
+	
+	import {goto} from '$app/navigation';
+
+	let base64String = '';
+	let avatar_path = '';
+	console.log(`BASE 64 STRING 1 : `,base64String);
+	async function imageUploaded() {
+		console.log(`BASE 64 STRING 2 : `,base64String);
+		let file = document.querySelector('input[type=file]')['files'][0];
+		console.log(`BASE 64 STRING 3 : `,base64String);
+		let reader = new FileReader();
+		console.log(`BASE 64 STRING 4 : `,base64String);
+		reader.onload = async function () {
+			console.log(`BASE 64 STRING 5 : `,base64String);
+			base64String = reader.result.replace('data:', '').replace(/^.+,/, '');
+			console.log(`BASE 64 STRING 6 : `,base64String);
+			avatar_path = base64String;
+			/*await fetch(window.location.href, 
+			{method: "POST", body: JSON.stringify({base64String})});
+			goto(`../words/add_word`);*/
+		};
+		console.log(`BASE 64 STRING 7 : `,base64String);
+		reader.readAsDataURL(file);
+		console.log(`BASE 64 STRING 8 : `,base64String);
+		
+		
+		console.log(`BASE 64 STRING 9: `,base64String);
+		return base64String;
+	}
+
 </script>
 
 <svelte:head>
@@ -36,11 +66,13 @@
 						<input type="text" class="form-control" id="word2" name="translation" />
 						{#if form?.empty_word2}<p class="error">Введите слово</p>{/if}
 					</div>
-
+					
 					<div>
 						<label for="word1" class="form-label">Изображение</label>
-						<input class="form-control" type="file" id="formFile" name="avatar" />
-						<p>Добавление изображений временно ограничено</p>
+						<input class="form-control" type="file" name="avatar" id="fileId" on:change={imageUploaded}  />
+					</div>
+					<div class="invisible">
+						<input type="text" name="avatar_path" id="avatar_path" bind:value={avatar_path}  />
 					</div>
 				</div>
 			</div>
@@ -94,6 +126,9 @@
 	}
 	.margin-l {
 		margin-right: 2rem;
+	}
+	.invisible{
+		visibility: hidden;
 	}
 	@media (max-width: 1000px) {
 		.inlb_left {
