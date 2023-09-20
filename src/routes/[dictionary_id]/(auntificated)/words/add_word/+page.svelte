@@ -32,6 +32,10 @@
 <section>
 	<h1>Добавить слово</h1>
 	<div class="container">
+		<div>
+			<label for="word1" class="form-label">Изображение</label>
+			<input class="form-control" type="file" name="avatar" id="fileId" on:change={imageUploaded}  />
+		</div>
 		<form method="POST" action="?/add_word" enctype="multipart/form-data">
 			<div class="flex">
 				<div class="inlb_left">
@@ -81,10 +85,6 @@
 				<button type="submit" class="btn btn-primary">Добавить</button>
 			</div>
 		</form>
-		<div>
-			<label for="word1" class="form-label">Изображение</label>
-			<input class="form-control" type="file" name="avatar" id="fileId" on:change={imageUploaded}  />
-		</div>
 	</div>
 </section>
 

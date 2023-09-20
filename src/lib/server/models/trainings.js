@@ -1,9 +1,9 @@
 import { runQuery, pool } from '$lib/server/db';
 
-async function get_words({ user_id, dictionary_id }) {
+async function get_words({ user_id, dictionary_id, current_cathegory }) {
 	const [rows0, fields0] = await pool.execute(
-		'SELECT `translation_id`, `has_studied`, `trainings_amount`, `mistakes_amount`, `word1`.`name` AS `name1`, `word2`.`name` AS `name2`, `transcription`, `context`, `picturepath` FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ?  ORDER BY `user_has_translation`.`trainings_amount` LIMIT 5',
-		[user_id, dictionary_id],
+		'SELECT `translation`.`translation_id` AS translation_id, `has_studied`, `trainings_amount`, `mistakes_amount`, `word1`.`name` AS `name1`, `word2`.`name` AS `name2`, `transcription`, `context`, `picturepath` FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` INNER JOIN `translation_has_cathegory` ON `translation_has_cathegory`.`translation_id` = `translation`.`translation_id` WHERE `user_id` = ? AND `dictionary_id` = ? AND `cathegory_id` = ?  ORDER BY `user_has_translation`.`trainings_amount` LIMIT 5',
+		[user_id, dictionary_id, current_cathegory],
 	);
 	console.log(`AND has_studied = 0 `, user_id);
 	return { words: rows0 };

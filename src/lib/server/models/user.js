@@ -93,6 +93,19 @@ async function signin({ email, password }) {
 	return user_id;
 }
 
+async function reset_password({ email }) {
+	const [rows, fields] = await pool.execute('SELECT password FROM `user` WHERE email = ?', [
+		email,
+	]);
+	
+	if (!rows.length) {
+		throw new Error('user_not_found');
+	}
+
+	
+	return true;
+}
+
 async function get_name(user_id) {
 	const [rows1, fields2] = await pool.execute('SELECT login FROM `user` WHERE user_id = ?', [
 		user_id,
@@ -108,4 +121,4 @@ async function get_user_info({user_id}) {
 	
 }
 
-export default { create, activate, signin, get_name, get_user_info };
+export default { create, activate, signin, get_name, get_user_info, reset_password };

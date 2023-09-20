@@ -5,7 +5,7 @@ export const prerender = false;
 
 export async function load({ locals, params}) {
         let dictionary_id = params.dictionary_id;
-        let words = await word.get_words(locals.session, dictionary_id);
+        let words = await word.get_words(locals.session, dictionary_id);//cathegory_id
         let cathegories = await word.get_cathegories(locals.session, dictionary_id);
         return {words, cathegories};
 }

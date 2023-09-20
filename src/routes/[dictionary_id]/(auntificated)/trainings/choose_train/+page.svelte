@@ -2,6 +2,8 @@
 	export let data;
 	import { cathegories } from '$lib/stores';
 	$cathegories = data.cathegories.cathegories;
+	$: current_cathegory = 0;
+	console.log(`Категория теперь: `, current_cathegory);
 </script>
 
 <svelte:head>
@@ -23,7 +25,7 @@
 								Тренировка методом словарных карточек с использованием метода Домана
 								и интервальных повторений.
 							</p>
-							<a href="./cards" class="btn btn-primary">Приступить</a>
+							<a href="./cards/{current_cathegory}" class="btn btn-primary">Приступить</a>
 						</div>
 					</div>
 
@@ -35,7 +37,7 @@
 								Тренировка методом Слово - перевод. К каждому слову на выбор даётся
 								4 варианта перевода, необходимо выбрать верный.
 							</p>
-							<a href="./word_translation" class="btn btn-primary">Приступить</a>
+							<a href="./word_translation/{current_cathegory}" class="btn btn-primary">Приступить</a>
 						</div>
 					</div>
 
@@ -47,7 +49,7 @@
 								Тренировка методом Перевод - слово. К каждому переводу на выбор
 								даётся 4 варианта слова, необходимо выбрать верный.
 							</p>
-							<a href="./translation_word" class="btn btn-primary">Приступить</a>
+							<a href="./translation_word/{current_cathegory}" class="btn btn-primary">Приступить</a>
 						</div>
 					</div>
 				</div>
@@ -62,6 +64,8 @@
 						name="flexRadioDefault"
 						id="0"
 						checked
+						value={0}
+						bind:group={current_cathegory}
 					/>
 					<label class="form-check-label" for="flexRadioDefault1"> Все слова </label>
 				</div>
@@ -72,6 +76,8 @@
 							type="radio"
 							name="flexRadioDefault"
 							id={cathegory.cathegory_id}
+							value={cathegory.cathegory_id}
+							bind:group={current_cathegory}
 						/>
 						<label class="form-check-label" for="flexRadioDefault1">
 							{cathegory.name}

@@ -31,7 +31,7 @@
 	async function finish() {
 		await fetch(window.location.href, 
 		{method: "POST", body: JSON.stringify(words)});
-		goto(`../trainings/choose_train`);
+		goto(`../choose_train`);
 	}
 </script>
 

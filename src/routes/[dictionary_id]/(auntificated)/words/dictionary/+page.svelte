@@ -2,6 +2,7 @@
 	import { words, cathegories } from '$lib/stores';
 	export let data;
 	import {goto} from '$app/navigation';
+	import { current_component } from 'svelte/internal';
 	$words = data.words.word_data;
 	$cathegories = data.cathegories.cathegories;
 
@@ -29,7 +30,18 @@
 	$: filteredCathegory = filterCathegory(search_cathegory);
 
 	let current_cathegory = 'all';
-	
+	/*function extractSelectCathegory(cathegory) {
+		return cathegory.name.toLowerCase();
+	}
+	function filterSelectCathegory(select_cathegory) {
+		let res = $cathegories;
+		res = res.filter((v) => extractSelectCathegory(v).includes(select_cathegory.toLowerCase()));
+		console.log(`res select `, res);
+		return res;
+	}
+	$: current_cathegory = filterSelectCathegory(select_cathegory);
+
+	console.log(`CURRENT CTG `, current_cathegory);*/
 	async function delete_word(translation_id) {
 		await fetch(window.location.href, 
 		{method: "DELETE", body: JSON.stringify(translation_id)});
