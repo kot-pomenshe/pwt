@@ -70,6 +70,52 @@ async function add_word({
 	return true;
 }
 
+async function edit_word({
+	word,
+	translation,
+	transcription,
+	context,
+	picture_path,
+	translation_id
+}) { //проверяем, есть ли слово
+	const [rows0, fields0] = await pool.execute(' SELECT `name` FROM `word` WHERE `name` = ?', [
+		word,
+	]); //если нет, добавляем слово
+	if (!rows0.length) {
+		await pool.execute('INSERT INTO `word` (`name`) VALUES (?)', [word]);
+	} //берём айди слова
+	const [rows00, fields00] = await pool.execute(
+		' SELECT `word_id` FROM `word` WHERE `name` = ?',
+		[word],
+	); 
+	
+	let word1_id = rows00[0].word_id;
+	console.log(`берём айди слова1`, word1_id);
+		//проверяем есть ли второе слово в базе
+	const [rows1, fields1] = await pool.execute(' SELECT `name` FROM `word` WHERE `name` = ?', [
+		translation,
+	]); //если нет, то добавляем
+	if (!rows1.length) {
+	console.log(`слова нет в базе, добавляем`);
+		await pool.execute('INSERT INTO `word` (`name`) VALUES (?)', [translation]);
+	} //берём айди второго слова
+	console.log(`Добавили. Ищем то, что добавили или было`);
+	const [rows11, fields11] = await pool.execute(
+		'SELECT `word_id` FROM `word` WHERE `name` = ?',
+		[translation],
+	);
+	let word2_id = rows11[0].word_id;
+	console.log(`берём айди слова2`, word2_id);
+
+		await pool.execute(
+			'UPDATE `translation` SET `word1_id`= ? ,`word2_id`= ? ,`transcription`= ? ,`context`= ? ,`picturepath`= ? WHERE `translation_id` = ?',
+			[word1_id, word2_id, transcription, context, picture_path, translation_id],
+		);
+	
+
+	return true;
+}
+
 async function import_translation(user_id, translation_id) {
 	const [rows23, fields23] = await pool.execute(
 		' SELECT * FROM `user_has_translation` WHERE `user_id` = ? AND `translation_id` = ? ',
@@ -353,4 +399,5 @@ export default {
 	check_dictionary,
 	add_user_has_cathegory,
 	get_cathegories_of_word,
+	edit_word,
 };

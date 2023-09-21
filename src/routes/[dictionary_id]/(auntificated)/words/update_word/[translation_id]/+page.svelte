@@ -1,8 +1,32 @@
 <script>
+	import { dictionary } from '$lib/stores';
 	export let data;
+	export let form;
 	let {current_word_info, user_id, translation_id} = data;
-	//console.log(`current_word_info `, current_word_info);
+
+	
 	current_word_info = current_word_info.word_data;
+
+	console.log(`current_word_info `, current_word_info);
+//
+
+let base64String = '';
+	let avatar_path = current_word_info.picture_path;
+	console.log(`BASE 64 STRING 1 : `,base64String);
+	async function imageUploaded() {
+		let file = document.querySelector('input[type=file]')['files'][0];
+		let reader = new FileReader();
+		reader.onload = async function () {
+			base64String = reader.result;
+			//avatar_path = 'data:image/jpg;base64,' + base64String;
+			avatar_path = base64String;
+			/*await fetch(window.location.href, 
+			{method: "POST", body: JSON.stringify({base64String})});
+			goto(`../words/add_word`);*/
+		};
+		reader.readAsDataURL(file);		
+		return base64String;
+	}
 </script>
 
 <svelte:head>
@@ -12,55 +36,59 @@
 <section>
 	<h1>Редактировать слово</h1>
 	<div class="container">
-		<form method="POST" action="?/add_word" enctype="multipart/form-data">
-			<div class="flex">
-				<div class="inlb_left">
-					<div>
-						<label for="word1" class="form-label">Слово</label>
-						<input type="text" class="form-control" id="word1" name="word" value={current_word_info.word11} />
-						
+		<div>
+			<label for="word1" class="form-label">Изображение</label>
+			<input class="form-control" type="file" name="avatar" id="fileId" on:change={imageUploaded}  />
+		</div>
+		<form method="POST" action="?/edit_word" enctype="multipart/form-data">
+				<div class="flex">
+					<div class="inlb_left">
+						<div>
+							<label for="word1" class="form-label">Слово</label>
+							<input type="text" class="form-control" id="word1" name="word" value="{current_word_info.word11}" />
+							{#if form?.empty_word1}<p class="error">Введите слово</p>{/if}
+						</div>
+						<div>
+							<label for="transcription" class="form-label">Транскрипция</label>
+							<input
+								type="text"
+								class="form-control"
+								id="transcription"
+								name="transcription"
+								value="{current_word_info.transcription}"
+							/>
+						</div>
 					</div>
-
-					<div>
-						<label for="word2" class="form-label">Перевод</label>
-						<input type="text" class="form-control" id="word2" name="translation" value={current_word_info.word12}/>
+	
+					<div class="inlb_right">
+						<div>
+							<label for="word2" class="form-label">Перевод</label>
+							<input type="text" class="form-control" id="word2" name="translation" value="{current_word_info.word12}" />
+							{#if form?.empty_word2}<p class="error">Введите слово</p>{/if}
+						</div>
 						
+						
+						<div class="invisible">
+							<input type="text" name="avatar_path" id="avatar_path" bind:value={avatar_path}  />
+						</div>
 					</div>
 				</div>
-
-				<div class="inlb_right">
-					<div>
-						<label for="transcription" class="form-label">Транскрипция</label>
-						<input
-							type="text"
-							class="form-control"
-							id="transcription"
-							name="transcription"
-							value={current_word_info.transcription}
-						/>
-					</div>
-
-					<div>
-						<label for="word1" class="form-label">Изображение</label>
-						<input class="form-control" type="file" id="formFile" name="avatar" value={current_word_info.path} />
-					</div>
+	
+				<div class="flex">
+					<label for="context" class="form-label">Контекст</label>
+					<input
+						type="text"
+						class="form-control"
+						id="context"
+						placeholder=""
+						name="context"
+						value="{current_word_info.context}"
+					/>
+					<input name="dictionary_id" type="hidden" value={$dictionary.dictionary_id} />
 				</div>
-			</div>
-
+	
 			<div class="flex">
-				<label for="context" class="form-label">Контекст</label>
-				<input
-					type="text"
-					class="form-control"
-					id="context"
-					name="context"
-					value={current_word_info.context}
-				/>
-				
-			</div>
-
-			<div class="flex">
-				<button type="submit" disabled class="btn btn-primary">Сохранить</button>
+				<button type="submit" class="btn btn-primary">Сохранить</button>
 			</div>
 		</form>
 	</div>
