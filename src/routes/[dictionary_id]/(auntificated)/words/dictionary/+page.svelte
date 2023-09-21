@@ -29,19 +29,7 @@
 	}
 	$: filteredCathegory = filterCathegory(search_cathegory);
 
-	let current_cathegory = 'all';
-	/*function extractSelectCathegory(cathegory) {
-		return cathegory.name.toLowerCase();
-	}
-	function filterSelectCathegory(select_cathegory) {
-		let res = $cathegories;
-		res = res.filter((v) => extractSelectCathegory(v).includes(select_cathegory.toLowerCase()));
-		console.log(`res select `, res);
-		return res;
-	}
-	$: current_cathegory = filterSelectCathegory(select_cathegory);
-
-	console.log(`CURRENT CTG `, current_cathegory);*/
+	console.log(`CURRENT CTG `, filteredCathegory);
 	async function delete_word(translation_id) {
 		await fetch(window.location.href, 
 		{method: "DELETE", body: JSON.stringify(translation_id)});
@@ -105,32 +93,10 @@
 								>
 							</div>
 							<br />
-							<div class="form-check">
-								<ul class="list-group list-group-horizontal">
-									<li class="list-group-item fixed_li2">
-										<input
-											class="form-check-input"
-											type="radio"
-											name="flexRadioDefault"
-											value="all"
-											checked
-											bind:group={current_cathegory}
-										/>
-										<label class="form-check-label" for="flexRadioDefault1">
-											Все слова
-										</label>
-									</li>
-								</ul>
+							<div>
 								{#each filteredCathegory as cathegory}
 									<ul class="list-group list-group-horizontal">
 										<li class="list-group-item fixed_li2">
-											<input
-												class="form-check-input"
-												type="radio"
-												name="flexRadioDefault"
-												value={cathegory.cathegory_id}
-												bind:group={current_cathegory}
-											/>
 											<label class="form-check-label" for="flexRadioDefault1">
 												{cathegory.name}
 											</label>
