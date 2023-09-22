@@ -16,7 +16,7 @@
 				<div class="flex">
 					<div class="inlb_left">
 						<img
-							src={`/` + word.picturepath}
+							src={word.picturepath}
 							class="card-img-top"
 							height="200"
 							alt="картинка к слову"

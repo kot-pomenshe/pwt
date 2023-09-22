@@ -1,5 +1,7 @@
 <script>
 export let word;
+let picturepath = word.picturepath;
+//console.log(`Picturepath: `, picturepath);
 import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher();
 </script>
@@ -7,7 +9,7 @@ const dispatch = createEventDispatcher();
 <h1>Выберите ответ</h1>
 <div class="d-flex">
 	<div class="card" style="width: 18rem;">
-		<img src={`/` + word.picturepath} class="card-img-top" alt="картинка к слову" />
+		<img src={picturepath} class="card-img-top" alt="картинка к слову" />
 		<div class="card-body">
 			<h5 class="card-title">{word.name1}</h5>
 			<p class="card-text">[{word.transcription}]</p>
