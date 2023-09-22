@@ -107,7 +107,7 @@ async function reset_password({ email }) {
 }
 
 async function edit_profile({ login, email, password, user_id }) {
-	const salt = "$2b$10$56wwTPr0VBcS7vzzhudBie";//HASH_SALT;
+	const salt = '$2b$10$56wwTPr0VBcS7vzzhudBie';//HASH_SALT;
 	console.log(`PWD: `, password, login, user_id, email);
 	let hash = bcrypt.hashSync(password, salt);
 

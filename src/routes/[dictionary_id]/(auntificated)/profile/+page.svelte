@@ -27,12 +27,14 @@
 				<div class="col-sm-10">
 					<input type="login" class="form-control" id="inputLogin3" name="login" value="{username}"/>
 				</div>
+				{#if form?.empty_login}<p class="error">Введите логин</p>{/if}
 			</div>
 			<div class="row mb-3">
 				<label for="inputEmail3" class="col-sm-2 col-form-label">e-mail</label>
 				<div class="col-sm-10">
 					<input type="email" class="form-control" id="inputEmail3" name="email" value="{email}" />
 				</div>
+				{#if form?.empty_email}<p class="error">Введите эмейл</p>{/if}
 			</div>
 			<div class="row mb-3">
 				<label for="inputPassword3" class="col-sm-2 col-form-label">Пароль</label>
@@ -45,6 +47,7 @@
 						value="************"
 					/>
 				</div>
+				{#if form?.empty_password}<p class="error">Введите пароль</p>{/if}
 			</div>
 			<div class="row mb-3">
 				<label for="selectLanguage" class="col-sm-2 col-form-label">Язык системы</label>

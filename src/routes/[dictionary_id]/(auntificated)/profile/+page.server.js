@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import user from '$lib/server/models/user';
 
 export let prerender = false;
@@ -26,6 +26,9 @@ async function edit_profile({ cookies, request }) {
 
 	if (login == '') {
 		return fail(400, { empty_login: true });
+	}
+	if (email == '') {
+		return fail(400, { empty_email: true });
 	}
 	if (email == '') {
 		return fail(400, { empty_password: true });

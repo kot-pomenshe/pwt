@@ -1,15 +1,34 @@
 <div class="container">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-        <img src="/PWT_logo.svg" alt="Logo" height="16" />
-      </a>
-      <span class="mb-3 mb-md-0 text-muted">© 2023 Personal Word Trainer</span>
-    </div>
+	<footer class="flex border-top align-items-center">
+		<div class="flex align-items-center">
+			<a href="/" class="left1">
+				<img src="/PWT_logo.svg" alt="Logo" height="16" />
+			</a>
+			<div class="lef2"> 2023 Personal Word Trainer</div>
+		</div>
 
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3">Контакты для связи:</li>
-      <li class="ms-3">personal_word_trainer_01@mail.ru</li>
-    </ul>
-  </footer>
+		<div class="flex">
+			<div class="left1">Контакты для связи: </div>
+			<div class="left2">personal_word_trainer_01@mail.ru</div>
+		</div>
+	</footer>
 </div>
+
+<style>
+	.flex {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+    margin-bottom: 10pt;
+    margin-top: 10pt;
+    padding: 3;
+    font-family: 'Montserrat';
+	}
+  .left1{
+    margin: 3pt 3pt 3pt 0pt;
+  }
+  .left2{
+    margin: 3pt 3pt 3pt 0pt;
+  }
+</style>
