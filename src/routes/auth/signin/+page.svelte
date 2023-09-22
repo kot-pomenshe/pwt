@@ -69,4 +69,7 @@
 	.width10{
 		width: 100%;
 	}
+	.error{
+		color: #8a307f;
+	}
 </style>

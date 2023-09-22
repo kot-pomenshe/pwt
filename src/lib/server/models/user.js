@@ -106,6 +106,19 @@ async function reset_password({ email }) {
 	return true;
 }
 
+async function edit_profile({ login, email, password, user_id }) {
+	const salt = "$2b$10$56wwTPr0VBcS7vzzhudBie";//HASH_SALT;
+	console.log(`PWD: `, password, login, user_id, email);
+	let hash = bcrypt.hashSync(password, salt);
+
+	await pool.query(
+		'UPDATE `user` SET `login`= ? ,`password`= ? ,`email`= ? WHERE `user_id` = ?', 
+		[login, hash, email, user_id]
+	);
+	
+	return true;
+}
+
 async function get_name(user_id) {
 	const [rows1, fields2] = await pool.execute('SELECT login FROM `user` WHERE user_id = ?', [
 		user_id,
@@ -121,4 +134,4 @@ async function get_user_info({user_id}) {
 	
 }
 
-export default { create, activate, signin, get_name, get_user_info, reset_password };
+export default { create, activate, signin, get_name, get_user_info, reset_password, edit_profile };

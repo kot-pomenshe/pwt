@@ -21,7 +21,7 @@
 				<button type="submit" class="btn btn-primary">Выйти</button>
 			</form>
 		</div>
-		<form method="POST" use:enhance action="?/profile_upd">
+		<form method="POST" use:enhance action="?/edit_profile">
 			<div class="row mb-3">
 				<label for="inputEmail3" class="col-sm-2 col-form-label">Логин</label>
 				<div class="col-sm-10">
@@ -54,7 +54,7 @@
 					</select>
 				</div>
 			</div>
-			<button type="submit" disabled class="btn btn-primary">Сохранить изменения</button>
+			<button type="submit" class="btn btn-primary">Сохранить изменения</button>
 		</form>
 	</div>
 </section>
