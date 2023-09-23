@@ -43,13 +43,19 @@ async function create({ login, password, email }) {
 		false,
 	]);
 
+	const dictionary_id = '1';
 	await pool.execute(
 		'INSERT INTO `user_has_dictionary`(`user_id`, `dictionary_id`) VALUES (?,?)',
-		[user_id, '1'],
+		[user_id, dictionary_id],
 	);
 
 	const cathegory_id = 3;
 	word.add_user_has_cathegory({ user_id, cathegory_id });
+	let words_of_cathegory = await word.get_words_of_cathegory(dictionary_id, cathegory_id);
+	for (let i of words_of_cathegory){
+		await word.import_translation(user_id, i.id);
+		console.log(`Добавили слово `, i.id);
+	}
 
 	const link = new URL(`auth/activation/${new_uid}`, BASE_URL).toString();
 
