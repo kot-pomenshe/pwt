@@ -1,6 +1,6 @@
 <script>
 	import Header from './Header.svelte';
-	import './styles.css';
+	import '../styles.css';
 	import {login, dictionary} from '$lib/stores'
 	export let data;
 
