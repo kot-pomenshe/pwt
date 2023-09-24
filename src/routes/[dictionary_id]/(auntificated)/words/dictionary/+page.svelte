@@ -203,6 +203,12 @@
 	h4 {
 		margin-top: 1rem;
 	}
+	h5{
+	color:#009d9e;
+}
+.accordion-button{
+	background-color: #d5ece6;
+}
 	.inlb {
 		display: flex;
 	}

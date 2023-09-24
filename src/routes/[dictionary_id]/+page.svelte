@@ -125,7 +125,9 @@
 	display: block;
 	padding: 70px 0 0 0px;
 }
-
+.fixed_li{
+	width:21rem;
+}
 .card {
 	color: #161616;
 	background: #d5ece6;
