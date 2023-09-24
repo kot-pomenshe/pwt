@@ -31,4 +31,7 @@
   .left2{
     margin: 3pt 3pt 3pt 0pt;
   }
+  footer{
+	background-color: #f0f0f0;
+  }
 </style>

@@ -25,7 +25,9 @@
 								Тренировка методом словарных карточек с использованием метода Домана
 								и интервальных повторений.
 							</p>
-							<a href="./cards/{current_cathegory}" class="btn btn-primary">Приступить</a>
+							<a href="./cards/{current_cathegory}" class="btn btn-primary"
+								>Приступить</a
+							>
 						</div>
 					</div>
 
@@ -37,7 +39,9 @@
 								Тренировка методом Слово - перевод. К каждому слову на выбор даётся
 								4 варианта перевода, необходимо выбрать верный.
 							</p>
-							<a href="./word_translation/{current_cathegory}" class="btn btn-primary">Приступить</a>
+							<a href="./word_translation/{current_cathegory}" class="btn btn-primary"
+								>Приступить</a
+							>
 						</div>
 					</div>
 
@@ -49,7 +53,9 @@
 								Тренировка методом Перевод - слово. К каждому переводу на выбор
 								даётся 4 варианта слова, необходимо выбрать верный.
 							</p>
-							<a href="./translation_word/{current_cathegory}" class="btn btn-primary">Приступить</a>
+							<a href="./translation_word/{current_cathegory}" class="btn btn-primary"
+								>Приступить</a
+							>
 						</div>
 					</div>
 				</div>
@@ -109,12 +115,37 @@
 	.inlb_right {
 		float: right;
 	}
-	.card {
-		width: 21rem;
-		margin: 10pt;
-	}
 	section {
 		margin-left: auto;
 		margin-right: auto;
+		background-color: #f0f0f0;
+		color: #009d9e;
+		nav-tabs-link-active-bg: #7cc1ac;
+		display: block;
+		padding: 70px 0 0 0px;
+	}
+
+	.card {
+		color: #161616;
+		background: #d5ece6;
+		width: 21rem;
+		margin: 10pt;
+	}
+
+	.btn,
+	.btn-primary {
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
+	}
+
+	.btn:hover {
+		color: #161616;
+		background-color: #7cc1ac;
+		border-color: #009d9e;
+	}
+
+	body {
+		background-color: #f0f0f0;
 	}
 </style>
