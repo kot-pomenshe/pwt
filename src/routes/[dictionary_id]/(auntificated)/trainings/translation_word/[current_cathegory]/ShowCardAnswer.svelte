@@ -14,23 +14,23 @@
 			<h4 class="card-title">{word.name1}</h4>
 			<h7 class="card-title">{word.context}</h7>
 			{#if word.answer}
-			<img
-				src="/icons/check-circle-fill.svg"
-				width="30"
-				height="24"
-				class="card-img-top"
-				alt="верно"
-			/>
-			<p class="card-text green">Ваш ответ: {word.selected_answer}</p>
+				<img
+					src="/icons/check-circle-fill.svg"
+					width="30"
+					height="24"
+					class="card-img-top"
+					alt="верно"
+				/>
+				<p class="card-text green">Ваш ответ: {word.selected_answer}</p>
 			{:else}
-			<img
-				src="/icons/x-circle-fill.svg"
-				width="30"
-				height="24"
-				class="card-img-top"
-				alt="неверно"
-			/>
-			<p class="card-text red">Ваш ответ: {word.selected_answer}</p>
+				<img
+					src="/icons/x-circle-fill.svg"
+					width="30"
+					height="24"
+					class="card-img-top"
+					alt="неверно"
+				/>
+				<p class="card-text red">Ваш ответ: {word.selected_answer}</p>
 			{/if}
 		</div>
 		<div class="d-flex">
@@ -55,14 +55,22 @@
 		margin-right: auto;
 		margin-bottom: 1rem;
 		margin-top: 1rem;
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
+	}
+	.btn:hover {
+		color: #161616;
+		background-color: #7cc1ac;
+		border-color: #009d9e;
 	}
 	.fixed_li {
 		width: 15rem;
 	}
-	.green{
+	.green {
 		color: #009d9e;
 	}
-	.red{
+	.red {
 		color: #cf0303;
 	}
 </style>

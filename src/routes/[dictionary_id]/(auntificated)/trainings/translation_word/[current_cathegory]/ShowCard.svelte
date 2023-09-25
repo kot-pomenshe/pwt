@@ -12,44 +12,43 @@
 	<div class="card" style="width: 45rem;">
 		<div class="card-body">
 			<h4 class="card-title">{word.name2}</h4>
-			
-				<div class="flex">
-					<div class="inlb_left">
-						<img
-							src={word.picturepath}
-							class="card-img-top"
-							height="200"
-							alt="картинка к слову"
-						/>
-					</div>
-					<div class="inlb_right">
-						{#each variants as variant}
-							<ul class="list-group list-group-horizontal">
-								<li class="list-group-item fixed_li">
-									<label>
-										<input
-											class="form-check-input"
-											type="radio"
-											bind:group={selected_answer}
-											name="scoops"
-											value={variant}
-										/>
-										{variant}
-									</label>
-								</li>
-							</ul>
-						{/each}
-					</div>
+
+			<div class="flex">
+				<div class="inlb_left">
+					<img
+						src={word.picturepath}
+						class="card-img-top"
+						height="200"
+						alt="картинка к слову"
+					/>
 				</div>
-			
-			
-		</div><div class="d-flex">
-				<button
-					on:click={() => dispatch('nextword', selected_answer)}
-					class="btn btn-primary"
-					disabled={!selected_answer}>Выбрать</button
-				>
+				<div class="inlb_right">
+					{#each variants as variant}
+						<ul class="list-group list-group-horizontal">
+							<li class="list-group-item fixed_li">
+								<label>
+									<input
+										class="form-check-input"
+										type="radio"
+										bind:group={selected_answer}
+										name="scoops"
+										value={variant}
+									/>
+									{variant}
+								</label>
+							</li>
+						</ul>
+					{/each}
+				</div>
 			</div>
+		</div>
+		<div class="d-flex">
+			<button
+				on:click={() => dispatch('nextword', selected_answer)}
+				class="btn btn-primary"
+				disabled={!selected_answer}>Выбрать</button
+			>
+		</div>
 	</div>
 </div>
 
@@ -70,6 +69,21 @@
 		margin-right: auto;
 		margin-bottom: 1rem;
 		margin-top: 1rem;
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
+	}
+
+	.btn-primary {
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
+	}
+
+	.btn:hover {
+		color: #161616;
+		background-color: #7cc1ac;
+		border-color: #009d9e;
 	}
 	.fixed_li {
 		width: 20rem;

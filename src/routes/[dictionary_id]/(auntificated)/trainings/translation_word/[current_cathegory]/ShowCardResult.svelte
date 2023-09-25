@@ -4,9 +4,9 @@
 	const dispatch = createEventDispatcher();
 
 	let correct_answers = 0;
-	for (let i of words){
-        if (i.answer) correct_answers+=1;
-    }
+	for (let i of words) {
+		if (i.answer) correct_answers += 1;
+	}
 </script>
 
 <h1>Результаты</h1>
@@ -36,7 +36,6 @@
 								alt="не верно"
 							/>
 						</li>
-						
 					{:else}
 						<li class="list-group-item list-group-item-success">
 							<img
@@ -50,10 +49,10 @@
 					{/if}
 				</ol>
 				{#if !word.answer}
-				<h7>Ваш ответ: {word.selected_answer}</h7>
+					<h7>Ваш ответ: {word.selected_answer}</h7>
 				{/if}
 			{/each}
-			<br>
+			<br />
 			<span class="badge bg-secondary">{correct_answers}/{words.length}</span>
 			<div class="d-flex">
 				<button on:click={() => dispatch('finish')} class="btn btn-primary">Далее</button>
@@ -88,28 +87,35 @@
 	.btn {
 		margin-left: auto;
 		margin-right: auto;
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
 	}
-
-	@media(max-width:1200px){
-		.fixed_li{
+	.btn:hover {
+		color: #161616;
+		background-color: #7cc1ac;
+		border-color: #009d9e;
+	}
+	@media (max-width: 1200px) {
+		.fixed_li {
 			width: 12rem;
 			font-size: 5vw;
 		}
 	}
-	@media(max-width:1000px){
-		.fixed_li{
+	@media (max-width: 1000px) {
+		.fixed_li {
 			width: 30vw;
 			font-size: 3vw;
 		}
 	}
-	@media(max-width:768px){
-		.fixed_li{
+	@media (max-width: 768px) {
+		.fixed_li {
 			width: 31vw;
 			font-size: 3vw;
 		}
 	}
-	@media(max-width:480px){
-		.fixed_li{
+	@media (max-width: 480px) {
+		.fixed_li {
 			width: 30vw;
 			font-size: 3.3vw;
 		}

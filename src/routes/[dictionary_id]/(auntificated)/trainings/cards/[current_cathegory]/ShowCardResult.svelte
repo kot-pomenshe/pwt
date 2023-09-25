@@ -4,9 +4,9 @@
 	const dispatch = createEventDispatcher();
 
 	let correct_answers = 0;
-	for (let i of words){
-        if (i.answer) correct_answers+=1;
-    }
+	for (let i of words) {
+		if (i.answer) correct_answers += 1;
+	}
 </script>
 
 <h1>Результаты</h1>
@@ -68,6 +68,8 @@
 		margin-bottom: 5%;
 		margin-top: 1%;
 		display: flex;
+		color: #161616;
+		background: #d5ece6;
 	}
 	.card-body {
 		margin-left: auto;
@@ -80,30 +82,45 @@
 		margin-top: 1rem;
 		margin-bottom: 1rem;
 	}
-	.btn {
+	.btn,
+	.btn-primary {
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	@media(max-width:1200px){
-		.fixed_li{
+
+	.btn:hover {
+		color: #161616;
+		background-color: #7cc1ac;
+		border-color: #009d9e;
+	}
+
+	body {
+		background-color: #f0f0f0;
+	}
+
+	@media (max-width: 1200px) {
+		.fixed_li {
 			width: 12rem;
 			font-size: 5vw;
 		}
 	}
-	@media(max-width:1000px){
-		.fixed_li{
+	@media (max-width: 1000px) {
+		.fixed_li {
 			width: 30vw;
 			font-size: 3vw;
 		}
 	}
-	@media(max-width:768px){
-		.fixed_li{
+	@media (max-width: 768px) {
+		.fixed_li {
 			width: 31vw;
 			font-size: 3vw;
 		}
 	}
-	@media(max-width:480px){
-		.fixed_li{
+	@media (max-width: 480px) {
+		.fixed_li {
 			width: 30vw;
 			font-size: 3.3vw;
 		}

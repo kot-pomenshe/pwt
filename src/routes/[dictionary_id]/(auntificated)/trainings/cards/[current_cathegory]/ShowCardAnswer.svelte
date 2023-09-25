@@ -14,21 +14,21 @@
 			<h5 class="card-title">{word.name2}</h5>
 			<h7 class="card-title">{word.context}.</h7>
 			{#if word.answer}
-			<img
-				src="/icons/check-circle-fill.svg"
-				width="30"
-				height="24"
-				class="card-img-top"
-				alt="верно"
-			/>
+				<img
+					src="/icons/check-circle-fill.svg"
+					width="30"
+					height="24"
+					class="card-img-top"
+					alt="верно"
+				/>
 			{:else}
-			<img
-				src="/icons/x-circle-fill.svg"
-				width="30"
-				height="24"
-				class="card-img-top"
-				alt="неверно"
-			/>
+				<img
+					src="/icons/x-circle-fill.svg"
+					width="30"
+					height="24"
+					class="card-img-top"
+					alt="неверно"
+				/>
 			{/if}
 			<button on:click={() => dispatch('next')} class="btn btn-primary">Далее</button>
 		</div>
@@ -45,5 +45,24 @@
 		margin-right: auto;
 		margin-bottom: 1%;
 		margin-top: 1%;
+		color: #161616;
+		background: #d5ece6;
+	}
+
+	.btn,
+	.btn-primary {
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
+	}
+
+	.btn:hover {
+		color: #161616;
+		background-color: #7cc1ac;
+		border-color: #009d9e;
+	}
+
+	body {
+		background-color: #f0f0f0;
 	}
 </style>
