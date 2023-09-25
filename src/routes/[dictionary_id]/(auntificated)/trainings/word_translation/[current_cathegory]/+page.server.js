@@ -7,6 +7,7 @@ export let prerender = false;
 export async function load({ locals, params}) {
 	const user_id = locals.session;
 	const dictionary_id = params.dictionary_id;
+	console.log(`Dictionary ID: `, dictionary_id);
 	let current_cathegory = params.current_cathegory;
 	const words = (await trainings.get_words({ user_id, dictionary_id, current_cathegory})).words;
 	const second_words = (await trainings.get_second_words({ user_id, dictionary_id })).words.map(i=>i.name2);
