@@ -67,7 +67,7 @@ async function update_word_statistics({
 }
 
 async function set_statistics(user_id, dictionary_id, date, result) {
-	//console.log(`set_st2: `, user_id, dictionary_id, date, result);
+	console.log(`set_st2: `, user_id, dictionary_id, date, result);
 	await pool.execute('INSERT INTO `training`(`date`, `result`, `user_id`, `dictionary_id`) VALUES (?,?,?,?)', [
 		date,
 		result,

@@ -167,9 +167,18 @@ ADD FOREIGN KEY (user_id) REFERENCES `user` (user_id);
 ALTER TABLE `activation`
 ADD FOREIGN KEY (user_id) REFERENCES `user` (user_id);
 
+ALTER TABLE translation
+ADD transcription CHAR(255) NULL,
+ADD context CHAR(255) NULL,
+ADD picturepath CHAR(255) NULL;
+
 ALTER TABLE `user_has_dictionary`
 ADD FOREIGN KEY (user_id) REFERENCES `user` (user_id) ON DELETE CASCADE,
 ADD FOREIGN KEY (dictionary_id) REFERENCES `dictionary` (dictionary_id);
+
+ALTER TABLE `translation` CHANGE `picturepath` `picturepath` MEDIUMTEXT;
+
+ALTER TABLE `dictionary` CHANGE `name` `name` CHAR(255);
 
 INSERT INTO `language`( `name`) VALUES ("English");
 INSERT INTO `language`( `name`) VALUES ("Russian");
