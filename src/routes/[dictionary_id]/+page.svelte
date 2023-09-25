@@ -59,7 +59,7 @@
 			<div class="trainings_statistics">
 				<br />
 
-				<div class="card text-center">
+				<!-- <div class="card text-center">
 					<div class="card-header"><h3>Статистика тренировок</h3></div>
 					<div class="card-body">
 						{#each trainings_statistics as training, i}
@@ -77,6 +77,7 @@
 						{/each}
 					</div>
 				</div>
+			-->
 			</div>
 		</div>
 	</div>

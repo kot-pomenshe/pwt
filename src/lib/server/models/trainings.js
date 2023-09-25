@@ -20,10 +20,13 @@ async function get_words({ user_id, dictionary_id, current_cathegory }) {
 }
 
 async function get_second_words({ user_id, dictionary_id }) {
+	console.log(`In get second words: User ID: `, user_id);
+	console.log(`In get second words: Dictionary ID: `, dictionary_id);
 	const [rows0, fields0] = await pool.execute(
 		'SELECT `translation_id`, `word2`.`name` AS `name2` FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ?  ORDER BY `user_has_translation`.`trainings_amount`',
 		[user_id, dictionary_id],
 	);
+	console.log(`In Second words. Second words result: `, rows0);
 	return { words: rows0 };
 }
 

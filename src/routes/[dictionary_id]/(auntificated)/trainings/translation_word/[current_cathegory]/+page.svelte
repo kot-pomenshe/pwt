@@ -11,7 +11,7 @@
 	words = words.map((word) => {
 		return { ...word, answer: false, selected_answer: ''};
 	});
-	console.log(`words: `, words);
+	//console.log(`words: `, words);
 
 	function shuffle(array) {
 		let currentIndex = array.length, randomIndex;
@@ -42,11 +42,11 @@
 	function fill_variants(correct_word){
 		let all_words = structuredClone(second_words).filter(i=>i!=correct_word);
 		let variants = [correct_word];
-		console.log(`allwrds `, all_words);
+		//console.log(`allwrds `, all_words);
 		for (let i of Array(3).keys()){
 			variants.push(popChoose(all_words));
 		}
-		console.log(`variants `, variants);
+		//console.log(`variants `, variants);
 		return shuffle(variants);
 	}
 
@@ -58,9 +58,9 @@
 	
 
 	function nextword(selected_answer) {
-		console.log(`ntwrd `, selected_answer);
+		//console.log(`ntwrd `, selected_answer);
 		words[current.word].selected_answer = selected_answer;
-		console.log(`verny otvet  `, words[current.word]);
+		//console.log(`verny otvet  `, words[current.word]);
 		if(words[current.word].selected_answer == words[current.word].name1){
 			words[current.word].answer = true;
 			words[current.word].has_studied = true;
