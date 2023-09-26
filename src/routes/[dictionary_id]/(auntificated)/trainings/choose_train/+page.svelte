@@ -107,6 +107,20 @@
 						<div class="card">
 							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
+								<h5 class="card-title">Слово — Перевод (hard)</h5>
+								<p class="card-text">
+									В усложнённой версии не показывается транскрипция слова. Данная тренировка удобна для изучения алфавита.
+								</p>
+								<a
+									href="./word_translation_hard/{current_cathegory}"
+									class="btn btn-primary">Приступить</a
+								>
+							</div>
+						</div>
+
+						<div class="card">
+							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
 								<h5 class="card-title">Перевод — Слово</h5>
 								<p class="card-text">
 									Тренировка методом Перевод — Слово. К каждому переводу на выбор
