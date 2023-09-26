@@ -28,8 +28,8 @@
 					<p>Данный сайт поможет тебе в изучении слов иностранных языков.</p>
 					<p>Наша главная особенность — возможность изучения любого языка.</p>
 					<p>
-						Создавай свои словари и добавляй туда нужные слова, либо же пользуйся
-						уже готовыми наборами.
+						Создавай свои словари и добавляй туда нужные слова, либо же пользуйся уже
+						готовыми наборами.
 					</p>
 				</div>
 			</div>
@@ -39,7 +39,9 @@
 			</div>
 		</div>
 
-		<div class="flex"><a href="/auth/signup" class="btn btn-primary montserrat">Регистрация</a></div>
+		<div class="flex">
+			<a href="/auth/signup" class="btn btn-primary montserrat">Регистрация</a>
+		</div>
 		<h4 class="red montserrat">Начни обучение прямо сейчас</h4>
 
 		<hr />
@@ -123,6 +125,14 @@
 		margin-top: 4rem;
 		margin-left: auto;
 		margin-right: auto;
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
+	}
+	.btn:hover {
+		color: #161616;
+		background-color: #7cc1ac;
+		border-color: #009d9e;
 	}
 	.flex {
 		display: flex;
