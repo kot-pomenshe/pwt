@@ -21,7 +21,7 @@
 		$dictionary_store = dictionary;
 		$words = await fetch(`/${dictionary.dictionary_id}`, {method: "POST", body: JSON.stringify(dictionary)}).then(r => r.json()).then(j => j.words.word_data);
 		goto(`/${dictionary.dictionary_id}`);
-		console.log(`wrds: `, $words);	
+		//console.log(`wrds: `, $words);	
 	}
 </script>
 

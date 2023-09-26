@@ -11,7 +11,7 @@
 	let session = data.user_id;
 	let translation_id = data.translation_id;
 	let cathegories_list = data.cathegories_list.cathegories_list;
-	console.log(`CATHEGORIES LIST `, cathegories_list);
+	//console.log(`CATHEGORIES LIST `, cathegories_list);
 	async function delete_word() {
 		await fetch(window.location.href, { method: 'DELETE' });
 		goto(`../dictionary`);

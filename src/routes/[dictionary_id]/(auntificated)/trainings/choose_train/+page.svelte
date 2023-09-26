@@ -3,7 +3,7 @@
 	import { cathegories } from '$lib/stores';
 	$cathegories = data.cathegories.cathegories;
 	$: current_cathegory = 0;
-	console.log(`Категория теперь: `, current_cathegory);
+	//console.log(`Категория теперь: `, current_cathegory);
 </script>
 
 <svelte:head>

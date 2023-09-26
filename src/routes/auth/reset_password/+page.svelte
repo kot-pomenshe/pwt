@@ -18,9 +18,12 @@
 				</div>
 				{#if form?.user_not_found}<p class="error">Пользователь не найден</p>{/if}
 			</div>
+			<p>Автоматическое восстановление пароля будет доступно в одном из следующих обновлений.</p>
+				<p>Для воостановления пароля свяжитесь со службой поддержки.</p>
+				<p>personal_word_trainer_01@mail.ru</p>
 			<div class="flex">
 				<div class="block marg-a ">
-					<button type="submit" class="width10 btn btn-primary">Восстановить</button>
+					<button type="submit" disabled class="width10 btn btn-primary">Восстановить</button>
 				</div>
 			</div>
 		</form>

@@ -17,6 +17,6 @@ export async function load({ locals, params}) {
 		
 		//throw redirect(303, '../trainings/choose_train');
 	}
-	console.log(`SNDwrdsmap `, second_words);
+	//console.log(`SNDwrdsmap `, second_words);
 	return {words, second_words};
 }

@@ -29,7 +29,7 @@
 	}
 	$: filteredCathegory = filterCathegory(search_cathegory);
 
-	console.log(`CURRENT CTG `, filteredCathegory);
+	//console.log(`CURRENT CTG `, filteredCathegory);
 	async function delete_word(translation_id) {
 		await fetch(window.location.href, 
 		{method: "DELETE", body: JSON.stringify(translation_id)});

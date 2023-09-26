@@ -7,7 +7,7 @@
 
 	let base64String = '';
 	let avatar_path = '';
-	console.log(`BASE 64 STRING 1 : `,base64String);
+	//console.log(`BASE 64 STRING 1 : `,base64String);
 	async function imageUploaded() {
 		let file = document.querySelector('input[type=file]')['files'][0];
 		let reader = new FileReader();

@@ -4,7 +4,7 @@
 	const dispatch = createEventDispatcher();
 
 	let selected_answer;
-	$: console.log(`sel answ `, selected_answer);
+	//$: console.log(`sel answ `, selected_answer);
 </script>
 
 <h1>Выберите ответ</h1>

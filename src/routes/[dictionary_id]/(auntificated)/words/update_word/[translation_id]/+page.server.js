@@ -31,7 +31,7 @@ async function edit_word({ cookies, request, params }) {
 	}
 
 	const avatar = data.get('avatar_path');
-	console.log(`AVATAR PATH: `, avatar);
+	//console.log(`AVATAR PATH: `, avatar);
 	let filename = 'placeholder_pic.jpg';
 
 	if (avatar != 'undefined') {

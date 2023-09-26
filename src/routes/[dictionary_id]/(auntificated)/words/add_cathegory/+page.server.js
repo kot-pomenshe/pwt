@@ -13,7 +13,7 @@ async function add_cathegory({ cookies, request, params }) {
 	const name = data.get('cathegory');
 	const user_id = cookies.get('session');
 	const dictionary_id = params.dictionary_id;
-	console.log(`find unerfind `, name, user_id, dictionary_id);
+	//console.log(`find unerfind `, name, user_id, dictionary_id);
 	await word.add_cathegory({ user_id, dictionary_id, name});
 
 	throw redirect(303, './dictionary');

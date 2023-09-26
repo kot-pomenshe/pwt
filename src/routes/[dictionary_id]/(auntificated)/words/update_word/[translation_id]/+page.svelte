@@ -7,12 +7,12 @@
 	
 	current_word_info = current_word_info.word_data;
 
-	console.log(`current_word_info `, current_word_info);
+	//console.log(`current_word_info `, current_word_info);
 //
 
 let base64String = '';
 	let avatar_path = current_word_info.picture_path;
-	console.log(`BASE 64 STRING 1 : `,base64String);
+	//console.log(`BASE 64 STRING 1 : `,base64String);
 	async function imageUploaded() {
 		let file = document.querySelector('input[type=file]')['files'][0];
 		let reader = new FileReader();

@@ -14,7 +14,7 @@ async function add_dictionary({ cookies, request }) {
 	const language2 = data.get('language2');
 	const user_id = cookies.get('session');
 
-	console.log(`log` , user_id, language1, language2);
+	//console.log(`log` , user_id, language1, language2);
 	await word.add_dictionary({ user_id, language1, language2 });
 
 	throw redirect(303, './dictionary');
