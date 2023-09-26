@@ -91,15 +91,16 @@
 			<br />
 		</div>
 		<br />
-		<hr />
+		<!-- <hr />
 		<div class="card montserrat">
 			<div class="card-header montserrat"><h7>Статистика использования сервиса</h7></div>
 			<div class="card-body montserrat">
 				<p>Пользователей на сайте: {users}</p>
 				<p>Всего слов добавлено: {words}</p>
-				<p>Выполнено тернировок: {trainings}</p>
+				<p>Выполнено тренировок: {trainings}</p>
 			</div>
 		</div>
+		-->
 	</div>
 	<br />
 </section>

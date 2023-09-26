@@ -7,6 +7,6 @@ export async function load({ locals }) {
 	}
 	
 	const statistics_info = await statistics.get_statistics();
-	console.log(`STAT `, statistics_info);
+	console.log(`stat `, statistics_info);
 	return {statistics_info};
 }

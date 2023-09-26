@@ -17,7 +17,7 @@ export async function POST({request, locals, cookies, params}) {
 
     let date =  new Date().toISOString().slice(0, 19).replace('T', ' ');
    for(let tw of training){
-        console.log(`tw_show: `, tw);
+        //console.log(`tw_show: `, tw);
         trainings.update_word_statistics({trainings_amount: tw.trainings_amount+1, mistakes_amount: tw.mistakes_amount, last_training_time: date, has_studied: tw.has_studied, translation_id: tw.translation_id, user_id: locals.session});
     }
     const dictionary_id = params.dictionary_id;

@@ -10,7 +10,7 @@
 	words = words.map((word) => {
 		return { ...word, answer: false };
 	});
-	console.log(`words: `, words);
+	//console.log(`words: `, words);
 	let current_word = 0;
 	let current_step = 0;
 
@@ -85,7 +85,5 @@
 body {
 	background-color: #f0f0f0;
 }
-
-
 
 </style>
