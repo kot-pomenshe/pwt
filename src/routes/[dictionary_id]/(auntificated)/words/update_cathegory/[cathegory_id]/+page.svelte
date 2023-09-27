@@ -35,8 +35,8 @@
 	<div class="container">
 		<h4>{cathegory_info.name}</h4>
 		<h5>ID: {cathegory_info.cathegory_id}</h5>
-		<h7>Идентификатор категории. Его можно отправить другу, чтобы поделиться катеорией</h7>
-		<h6>Автор категори: {cathegory_info.author_name}</h6>
+		<h7>Идентификатор категории. Его можно отправить другу, чтобы поделиться категорией</h7>
+		<h6>Автор категории: {cathegory_info.author_name}</h6>
 		<hr />
 		<br />
 		<form class="d-flex">
