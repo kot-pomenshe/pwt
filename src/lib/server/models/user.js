@@ -17,7 +17,7 @@ async function create({ login, password, email }) {
 	const [rows00, fields00] = await pool.query(
 		'SELECT user_id from `user` WHERE email = ' + `"${email}"`,
 	);
-	console.log(`rows00 `, rows00);
+	//console.log(`rows00 `, rows00);
 	//console.log(`rows00[0]`, rows00[0]);
 	//console.log(`rows00.user_id `, rows00.user_id);
 	//console.log(`rows00[0].user_id `, rows00[0].user_id);
@@ -25,7 +25,7 @@ async function create({ login, password, email }) {
 		console.log(`Поиск эмейла в базе: `, rows00[0]);
 		throw new Error('email_already_regd');
 	}
-	console.log(`Эмейл в базе не найден, регистрируем пользователя: `);
+	console.log(`Эмейл в базе не найден, регистрируем пользователя: `, email);
 	await pool.query(
 		'INSERT INTO `user`(login, password, email) VALUES ' + `("${login}","${hash}","${email}")`,
 	);

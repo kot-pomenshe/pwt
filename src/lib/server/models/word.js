@@ -22,16 +22,16 @@ async function add_word({
 	); 
 	
 	let word1_id = rows00[0].word_id;
-	console.log(`берём айди слова1`, word1_id);
+	//console.log(`берём айди слова1`, word1_id);
 		//проверяем есть ли второе слово в базе
 	const [rows1, fields1] = await pool.execute(' SELECT `name` FROM `word` WHERE `name` = ?', [
 		translation,
 	]); //если нет, то добавляем
 	if (!rows1.length) {
-	console.log(`слова нет в базе, добавляем`);
+	console.log(`Cлова нет в базе, добавляем`);
 		await pool.execute('INSERT INTO `word` (`name`) VALUES (?)', [translation]);
 	} //берём айди второго слова
-	console.log(`Добавили. Ищем то, что добавили или было`);
+	//console.log(`Добавили. Ищем то, что добавили или было`);
 	const [rows11, fields11] = await pool.execute(
 		'SELECT `word_id` FROM `word` WHERE `name` = ?',
 		[translation],
@@ -40,13 +40,13 @@ async function add_word({
 	console.log(`4`, rows11[0]);
 	console.log(`5`, rows11[0].word_id);
 	let word2_id = rows11[0].word_id;
-	console.log(`берём айди слова2`, word2_id);
+	//console.log(`берём айди слова2`, word2_id);
 		//провеярем айди перевода
 	const [rows2, fields2] = await pool.execute(
 		'SELECT `translation_id` FROM `translation` WHERE `word1_id` = ? AND `word2_id` = ? AND `dictionary_id` = ? AND `transcription` = ? AND `context` = ? AND `picturepath` =  ?',
 		[word1_id, word2_id, current_dictionary, transcription, context, picture_path],
 	);
-	console.log(`есть ли вариант перевода`, rows2);
+	//console.log(`есть ли вариант перевода`, rows2);
 		//создаём вариант перевода, если такого ещё не было
 	if (!rows2.length) {
 		await pool.execute(
@@ -61,7 +61,7 @@ async function add_word({
 	);
 	if (rows22.length) {
 		let translation_id = rows22[0].translation_id;
-		console.log(`берём айди of the translation`, translation_id);
+	//	console.log(`берём айди of the translation`, translation_id);
 	await pool.execute(
 		'INSERT INTO `user_has_translation`(`translation_id`, `user_id`, `trainings_amount`, `mistakes_amount`, `has_studied`) VALUES (?,?,"0","0","0")',
 		[translation_id, user_id],
@@ -90,22 +90,22 @@ async function edit_word({
 	); 
 	
 	let word1_id = rows00[0].word_id;
-	console.log(`берём айди слова1`, word1_id);
+	//console.log(`берём айди слова1`, word1_id);
 		//проверяем есть ли второе слово в базе
 	const [rows1, fields1] = await pool.execute(' SELECT `name` FROM `word` WHERE `name` = ?', [
 		translation,
 	]); //если нет, то добавляем
 	if (!rows1.length) {
-	console.log(`слова нет в базе, добавляем`);
+	console.log(`Cлова нет в базе, добавляем`);
 		await pool.execute('INSERT INTO `word` (`name`) VALUES (?)', [translation]);
 	} //берём айди второго слова
-	console.log(`Добавили. Ищем то, что добавили или было`);
+	//console.log(`Добавили. Ищем то, что добавили или было`);
 	const [rows11, fields11] = await pool.execute(
 		'SELECT `word_id` FROM `word` WHERE `name` = ?',
 		[translation],
 	);
 	let word2_id = rows11[0].word_id;
-	console.log(`берём айди слова2`, word2_id);
+	//console.log(`берём айди слова2`, word2_id);
 
 		await pool.execute(
 			'UPDATE `translation` SET `word1_id`= ? ,`word2_id`= ? ,`transcription`= ? ,`context`= ? ,`picturepath`= ? WHERE `translation_id` = ?',
@@ -136,7 +136,7 @@ async function check_dictionary(cathegory_id ) {
 		'SELECT `dictionary_id` FROM `cathegory` WHERE `cathegory_id` = ?',
 		[cathegory_id],
 	);
-	console.log(`check dictionary`, rows5);
+	//console.log(`check dictionary`, rows5);
 	//понять, что выводится
 
 	return rows5[0].dictionary_id ;
@@ -159,7 +159,7 @@ async function add_user_has_cathegory({ user_id, cathegory_id }) {
 			'INSERT INTO `user_has_cathegory` (`user_id`, `cathegory_id`) VALUES (?,?)',
 			[user_id, cathegory_id],
 		);
-		console.log(`добавили пользователю категорию`, user_id, cathegory_id);
+		console.log(`Добавили пользователю`, user_id, `категорию`, cathegory_id);
 	}
 	return true;
 }
@@ -177,7 +177,7 @@ async function add_cathegory({ user_id, dictionary_id, name }) {
 			[name, user_id, dictionary_id],
 		);
 	}
-	console.log(`find другая строка  `, name, user_id, dictionary_id);
+	//console.log(`find другая строка  `, name, user_id, dictionary_id);
 	const [rows00, fields00] = await pool.execute(
 		//находим идентификатор
 		`SELECT cathegory_id FROM cathegory WHERE name = "${name}" AND author = ${user_id} AND dictionary_id = ${dictionary_id}`,
@@ -236,7 +236,7 @@ async function add_dictionary({ user_id, language1, language2 }) {
 		[lang_name, lang1_id, lang2_id],
 	);
 	if (!rows2.length) {
-		console.log(`long data name: `, lang_name);
+		//console.log(`long data name: `, lang_name);
 		await pool.execute(
 			'INSERT INTO `dictionary`(`name`, `id_language1`, `id_language2`) VALUES (?, ?, ?)',
 			[lang_name, lang1_id, lang2_id],
@@ -246,8 +246,8 @@ async function add_dictionary({ user_id, language1, language2 }) {
 		'SELECT `dictionary_id` FROM `dictionary` WHERE `name` = ? AND id_language1 = ? AND id_language2 = ?',
 		[lang_name, lang1_id, lang2_id],
 	);
-	console.log(`params : `, lang_name, lang1_id, lang2_id);
-	console.log(`dict id : `, rows22);
+	//console.log(`params : `, lang_name, lang1_id, lang2_id);
+	//console.log(`dict id : `, rows22);
 	let dictionary_id = rows22[0].dictionary_id;
 
 	await pool.execute(
@@ -280,7 +280,7 @@ async function get_words_of_cathegory(dictionary_id, cathegory_id) {
 		'SELECT `user_has_translation`.`translation_id` as id FROM `user_has_translation` INNER JOIN `translation` ON `translation`.`translation_id` = `user_has_translation`.`translation_id` INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` LEFT JOIN `translation_has_cathegory` ON `translation`.`translation_id` = `translation_has_cathegory`.`translation_id` WHERE `dictionary_id` = ? AND `translation_has_cathegory`.`cathegory_id` = ? ORDER BY `user_has_translation`.`translation_id` DESC',
 		[ dictionary_id, cathegory_id],
 	);
-		console.log(`WORDS OF CATEGORY`, rows0);
+		//console.log(`WORDS OF CATEGORY`, rows0);
 	return rows0 ;
 }
 
@@ -318,7 +318,7 @@ async function insert_word_to_cathegory(translation_id, cathegory_id) {
 }
 
 async function delete_word_from_cathegory(translation_id, cathegory_id) {
-	//console.log(`удаляем слово из категории `, translation_id, cathegory_id);
+	console.log(`Удаляем слово`, translation_id, `из категории `, cathegory_id);
 	const [rows4, fields4] = await pool.execute(
 		'SELECT * FROM `translation_has_cathegory` WHERE `translation_id` = ? AND `cathegory_id` = ?',
 		[translation_id, cathegory_id],

@@ -10,7 +10,7 @@ export async function load({ locals, params }) {
 		const user_name = await user.get_name(user_id);
 		let dictionaries = await word.get_dictionaries(user_id);
 		let current_dictionary = await word.get_current_dictionary(params.dictionary_id);
-		console.log(`dctnr: `, current_dictionary);
+		//console.log(`dctnr: `, current_dictionary);
 		return {user_id: locals.session, user_name, dictionaries, current_dictionary};
 	}
 }

@@ -35,7 +35,7 @@ async function get_first_words({ user_id, dictionary_id }) {
 		'SELECT `translation_id`, `word1`.`name` AS `name1` FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ?  ORDER BY `user_has_translation`.`trainings_amount`',
 		[user_id, dictionary_id],
 	);
-	console.log(`WRDS `, rows0);
+	//console.log(`WRDS `, rows0);
 	return { words: rows0 };
 }
 async function update_word_statistics({
@@ -47,7 +47,7 @@ async function update_word_statistics({
 	user_id,
 }) {
 	console.log(
-		`set_st1: `,
+		`Статистика по слову: `,
 		trainings_amount,
 		mistakes_amount,
 		last_training_time,
@@ -70,7 +70,7 @@ async function update_word_statistics({
 }
 
 async function set_statistics(user_id, dictionary_id, date, result) {
-	console.log(`set_st2: `, user_id, dictionary_id, date, result);
+	//console.log(`set_st2: `, user_id, dictionary_id, date, result);
 	await pool.execute('INSERT INTO `training`(`date`, `result`, `user_id`, `dictionary_id`) VALUES (?,?,?,?)', [
 		date,
 		result,
