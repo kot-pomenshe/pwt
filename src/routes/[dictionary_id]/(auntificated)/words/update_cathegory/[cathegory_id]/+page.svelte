@@ -59,7 +59,7 @@
 		{#each filteredList as word}
 		<div class="form-check">
 			<input class="form-check-input" disabled = {!is_author} type="checkbox" bind:checked="{word.belongs_to_cathegory}" id="{word.translation_id}" />
-			<label class="form-check-label" for={word.translation_id}> {word.word11} - {word.word12} </label>
+			<label class="form-check-label" for={word.translation_id}> {word.word11} — {word.word12} </label>
 		</div>
 		{/each}
 
