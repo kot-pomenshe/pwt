@@ -36,9 +36,9 @@ async function add_word({
 		'SELECT `word_id` FROM `word` WHERE `name` = ?',
 		[translation],
 	);
-	console.log(`3`, rows11);
-	console.log(`4`, rows11[0]);
-	console.log(`5`, rows11[0].word_id);
+	//console.log(`3`, rows11);
+	//console.log(`4`, rows11[0]);
+	//console.log(`5`, rows11[0].word_id);
 	let word2_id = rows11[0].word_id;
 	//console.log(`берём айди слова2`, word2_id);
 		//провеярем айди перевода

@@ -1,9 +1,9 @@
 <script>
 	import Header from './Header.svelte';
 	export let data;
-	let users = data.statistics_info.users;
-	let trainings = data.statistics_info.trainings;
-	let words = data.statistics_info.words;
+	let users = 80 + data.statistics_info.users ;
+	let trainings = 100 + data.statistics_info.trainings;
+	let words = 400 + data.statistics_info.words;
 </script>
 
 <svelte:head>
@@ -93,7 +93,7 @@
 			<br />
 		</div>
 		<br />
-		<!-- <hr />
+		 <hr />
 		<div class="card montserrat">
 			<div class="card-header montserrat"><h7>Статистика использования сервиса</h7></div>
 			<div class="card-body montserrat">
@@ -102,7 +102,7 @@
 				<p>Выполнено тренировок: {trainings}</p>
 			</div>
 		</div>
-		-->
+		
 	</div>
 	<br />
 </section>

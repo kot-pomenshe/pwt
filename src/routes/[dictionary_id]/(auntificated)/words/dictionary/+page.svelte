@@ -24,7 +24,7 @@
 	function filterCathegory(search_cathegory) {
 		let res = $cathegories;
 		res = res.filter((v) => extractSearchCathegory(v).includes(search_cathegory.toLowerCase()));
-		console.log(`res `, res);
+		//console.log(`res `, res);
 		return res;
 	}
 	$: filteredCathegory = filterCathegory(search_cathegory);
