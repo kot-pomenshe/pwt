@@ -23,7 +23,7 @@
 		margin-bottom: 10pt;
 		margin-top: 10pt;
 		padding: 3;
-		font-family: 'Montserrat';
+		font-family: 'Montserrat', sans-serif;
 	}
 	.left1 {
 		margin: 3pt 3pt 3pt 0pt;

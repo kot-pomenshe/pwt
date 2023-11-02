@@ -24,7 +24,7 @@
 <style>
 	.nav {
 		color: #009d9e;
-		font-family: 'Montserrat';
+		font-family: 'Montserrat', sans-serif;
 		src: url('fonts\Montserrat-Black.ttf');
 		text-decoration: none;
 	}

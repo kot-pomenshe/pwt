@@ -116,7 +116,7 @@
 		display: flex;
 	}
 	.montserrat {
-		font-family: 'Montserrat';
+		font-family: 'Montserrat', sans-serif;
 		font-size: large;
 	}
 	section {

@@ -1,9 +1,9 @@
 <script>
 	import Header from './Header.svelte';
 	export let data;
-	let users = 80 + data.statistics_info.users ;
-	let trainings = 100 + data.statistics_info.trainings;
-	let words = 400 + data.statistics_info.words;
+	let users = data.statistics_info.users ;
+	let trainings = data.statistics_info.trainings;
+	let words = data.statistics_info.words;
 </script>
 
 <svelte:head>
@@ -92,6 +92,7 @@
 			</div>
 			<br />
 		</div>
+		<!--
 		<br />
 		 <hr />
 		<div class="card montserrat">
@@ -102,7 +103,7 @@
 				<p>Выполнено тренировок: {trainings}</p>
 			</div>
 		</div>
-		
+		-->
 	</div>
 	<br />
 </section>
@@ -150,7 +151,7 @@
 		margin: auto;
 	}
 	.montserrat {
-		font-family: 'Montserrat';
+		font-family: 'Montserrat', sans-serif;
 	}
 	.large {
 		font-size: large;
