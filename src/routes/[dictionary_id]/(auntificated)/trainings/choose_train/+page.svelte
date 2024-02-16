@@ -132,6 +132,20 @@
 								>
 							</div>
 						</div>
+
+						<div class="card">
+							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
+								<h5 class="card-title">Слово — Перевод (Время)</h5>
+								<p class="card-text">
+									Тренировка методом Слово — Перевод. На каждый ответ даётся 5 секунд.
+								</p>
+								<a
+									href="./word_translation_timer/{current_cathegory}"
+									class="btn btn-primary">Приступить</a
+								>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
