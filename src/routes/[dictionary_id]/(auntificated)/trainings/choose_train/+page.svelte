@@ -104,7 +104,7 @@
 							</div>
 						</div>
 						<div class="card">
-							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
+							<img src="/files/tw.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Перевод — Слово</h5>
 								<p class="card-text">
@@ -119,7 +119,7 @@
 						</div>
 
 						<div class="card">
-							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
+							<img src="/files/wtwt.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Слово — Перевод (hard)</h5>
 								<p class="card-text">
@@ -134,7 +134,7 @@
 						</div>
 
 						<div class="card">
-							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
+							<img src="/files/wtt.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Слово — Перевод (timer)</h5>
 								<p class="card-text">
