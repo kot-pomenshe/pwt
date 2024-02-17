@@ -86,6 +86,10 @@
 		background-color: #7cc1ac;
 		border-color: #009d9e;
 	}
+	.btn[disabled]{
+		background: #7cc1ac;
+		border-color: #009d9e;
+	} 
 	.fixed_li {
 		width: 20rem;
 	}

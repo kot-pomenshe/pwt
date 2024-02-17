@@ -22,8 +22,6 @@
 		if ((duration-elapsed) == 0) { dispatch('nextword', '')}
 	})();
 
-
-
 	onDestroy(() => {
 		cancelAnimationFrame(frame);
 	});
@@ -64,12 +62,13 @@
 					{/each}
 				</div>
 			</div>
+			
 		</div>
-		<label>
+		<div class="card-body">
 			Осталось:
 			<div>{(duration / 1000 - elapsed / 1000).toFixed(1)} секунд </div>
 			<progress value={1 - elapsed / duration} />
-		</label>
+		</div>
 		<div class="d-flex">
 			<button
 				on:click={() => dispatch('nextword', selected_answer)}
@@ -113,6 +112,10 @@
 		background-color: #7cc1ac;
 		border-color: #009d9e;
 	}
+	.btn[disabled]{
+		background: #7cc1ac;
+		border-color: #009d9e;
+	} 
 	.fixed_li {
 		width: 20rem;
 	}
@@ -124,5 +127,11 @@
 	}
 	.inlb_right {
 		float: right;
+	}
+	progress{
+		background-color:#009d9e;
+		border: 1px;
+  		height: 9px;
+  		border-radius: 10vw;
 	}
 </style>
