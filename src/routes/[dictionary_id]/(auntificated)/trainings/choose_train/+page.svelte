@@ -52,21 +52,21 @@
 									</label>
 								</div>
 								{#each $cathegories as cathegory}
-								<ul class="list-group list-group-horizontal">
-									<div class="form-check">
-										<input
-											class="form-check-input"
-											type="radio"
-											name="flexRadioDefault"
-											id={cathegory.cathegory_id}
-											value={cathegory.cathegory_id}
-											bind:group={current_cathegory}
-										/>
-										<label class="form-check-label" for="flexRadioDefault1">
-											{cathegory.name}
-										</label>
-									</div>
-								</ul>
+									<ul class="list-group list-group-horizontal">
+										<div class="form-check">
+											<input
+												class="form-check-input"
+												type="radio"
+												name="flexRadioDefault"
+												id={cathegory.cathegory_id}
+												value={cathegory.cathegory_id}
+												bind:group={current_cathegory}
+											/>
+											<label class="form-check-label" for="flexRadioDefault1">
+												{cathegory.name}
+											</label>
+										</div>
+									</ul>
 								{/each}
 							</div>
 						</div>
@@ -80,8 +80,8 @@
 							<div class="card-body">
 								<h5 class="card-title">Карточки</h5>
 								<p class="card-text">
-									Тренировка методом словарных карточек с использованием метода
-									Домана и интервальных повторений.
+									Тренировка методом словарных карточек. Смотрите на карточки и
+									отмечаете те слова, которые уже запомнили.
 								</p>
 								<a href="./cards/{current_cathegory}" class="btn btn-primary"
 									>Приступить</a
@@ -103,21 +103,6 @@
 								>
 							</div>
 						</div>
-
-						<div class="card">
-							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
-							<div class="card-body">
-								<h5 class="card-title">Слово — Перевод (hard)</h5>
-								<p class="card-text">
-									В усложнённой версии не показывается транскрипция слова. Данная тренировка удобна для изучения алфавита.
-								</p>
-								<a
-									href="./word_translation_hard/{current_cathegory}"
-									class="btn btn-primary">Приступить</a
-								>
-							</div>
-						</div>
-
 						<div class="card">
 							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
@@ -136,9 +121,25 @@
 						<div class="card">
 							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
-								<h5 class="card-title">Слово — Перевод (Время)</h5>
+								<h5 class="card-title">Слово — Перевод (hard)</h5>
 								<p class="card-text">
-									Тренировка методом Слово — Перевод. На каждый ответ даётся 5 секунд.
+									В усложнённой версии не показывается транскрипция слова. Эта
+									тренировка также удобна для изучения алфавита.
+								</p>
+								<a
+									href="./word_translation_hard/{current_cathegory}"
+									class="btn btn-primary">Приступить</a
+								>
+							</div>
+						</div>
+
+						<div class="card">
+							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
+								<h5 class="card-title">Слово — Перевод (timer)</h5>
+								<p class="card-text">
+									Тренировка методом Слово — Перевод. На каждый ответ даётся 10
+									секунд.
 								</p>
 								<a
 									href="./word_translation_timer/{current_cathegory}"
@@ -158,12 +159,12 @@
 		text-align: center;
 		padding: 0 0 20px 0;
 	}
-h5{
-	color:#009d9e;
-}
-.accordion-button{
-	background-color: #d5ece6;
-}
+	h5 {
+		color: #009d9e;
+	}
+	.accordion-button {
+		background-color: #d5ece6;
+	}
 	.flex {
 		display: flex;
 		flex-wrap: wrap;
