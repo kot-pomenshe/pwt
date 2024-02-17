@@ -18,7 +18,11 @@
 		const time = window.performance.now();
 		elapsed += Math.min(time - last_time, duration - elapsed);
 		last_time = time;
+
+		if ((duration-elapsed) == 0) { dispatch('nextword', '')}
 	})();
+
+
 
 	onDestroy(() => {
 		cancelAnimationFrame(frame);
