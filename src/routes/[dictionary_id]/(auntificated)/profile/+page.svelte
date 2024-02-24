@@ -44,7 +44,7 @@
 						class="form-control"
 						id="inputPassword3"
 						name="password"
-						value="************"
+						value=""
 					/>
 				</div>
 				{#if form?.empty_password}<p class="error">Введите пароль</p>{/if}
