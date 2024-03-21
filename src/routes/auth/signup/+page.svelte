@@ -79,19 +79,31 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+	.btn,
+	.btn-primary {
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
+	}
+
+	.btn:hover {
+		color: #161616;
+		background-color: #7cc1ac;
+		border-color: #009d9e;
+	}
 	.flex {
 		display: flex;
 	}
-	p{
+	p {
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 1rem;
 	}
-	a{
+	a {
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.error{
+	.error {
 		color: #8a307f;
 	}
 </style>
