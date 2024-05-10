@@ -78,6 +78,18 @@
 						<div class="card">
 							<img src="/files/cards.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
+								<h5 class="card-title">Просто смотрю</h5>
+								<p class="card-text">
+									Здесь ты можешь ознакомиться со словами. Просто смотри на карточки и запоминай.
+								</p>
+								<a href="./just_watch/{current_cathegory}" class="btn btn-primary"
+									>Приступить</a
+								>
+							</div>
+						</div>
+						<div class="card">
+							<img src="/files/cards.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
 								<h5 class="card-title">Карточки</h5>
 								<p class="card-text">
 									Тренировка методом словарных карточек. Смотрите на карточки и
