@@ -18,6 +18,8 @@
 		current_word++;
 	}
 	async function finish() {
+		await fetch(window.location.href, 
+		{method: "POST", body: JSON.stringify(words)});
 		goto(`../choose_train`);
 	}
 </script>

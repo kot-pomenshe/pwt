@@ -24,6 +24,42 @@ async function get_statistics() {
 	return {words, users, trainings};
 }
 
+async function get_total_score({user_id, dictionary_id}) {
+	//console.log(`d_id: `, dictionary_id, user_id);
+
+	const [rows6, fields0] = await pool.execute('SELECT total_score FROM `user_has_dictionary` WHERE `user_id`= ? AND `dictionary_id`= ?', [
+		user_id,
+		dictionary_id,
+	]);
+
+	console.log(`rows6: `, rows6[0].total_score);
+	return rows6[0].total_score;
+}
+
+async function get_trainings_amount({user_id, dictionary_id}) {
+	//console.log(`d_id: `, dictionary_id, user_id);
+
+	const [rows7, fields0] = await pool.execute('SELECT trainings_amount FROM `user_has_dictionary` WHERE `user_id`= ? AND `dictionary_id`= ?', [
+		user_id,
+		dictionary_id,
+	]);
+	console.log(`rows7: `, rows7[0].trainings_amount);
+	let tr_am=rows7[0].trainings_amount;
+	return tr_am;
+}
+
+async function update_score({
+	user_id, dictionary_id, total_score, trainings_amount
+}) {
+	await pool.execute(
+		'UPDATE `user_has_dictionary` SET `total_score`= ?, `trainings_amount`= ? WHERE `dictionary_id` = ? AND `user_id` = ?',
+		[
+			total_score, trainings_amount, dictionary_id, user_id,
+		],
+	);
+	return true;
+}
+
 export default {
-	get_statistics,
+	get_statistics, get_total_score, get_trainings_amount, update_score,
 };

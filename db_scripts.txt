@@ -180,6 +180,10 @@ ALTER TABLE `translation` CHANGE `picturepath` `picturepath` MEDIUMTEXT;
 
 ALTER TABLE `dictionary` CHANGE `name` `name` CHAR(255);
 
+ALTER TABLE `user_has_dictionary` ADD `total_score` INT NULL AFTER `dictionary_id`;
+
+ALTER TABLE `user_has_dictionary` ADD `trainings_amount` INT NULL AFTER `total_score`;
+
 INSERT INTO `language`( `name`) VALUES ("English");
 INSERT INTO `language`( `name`) VALUES ("Russian");
 INSERT INTO `dictionary`(`name`, `id_language1`, `id_language2`) VALUES ("English -> Russian", "1", "2");
