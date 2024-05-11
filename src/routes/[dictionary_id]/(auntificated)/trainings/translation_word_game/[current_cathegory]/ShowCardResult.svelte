@@ -71,14 +71,14 @@
 			<p>Начислено {correct_answers*2 + 5}XP за тренировку</p>
 			<p>Всего баллов: {total_score + correct_answers*2 + 5}</p>
 			<p>Пройдено тренировок: {trainings_amount + 1}</p>
-			{#if trainings_amount < 10}
+			{#if trainings_amount+1 < 10}
 			<p>Пройдите ещё {10 - (trainings_amount + 1)}, чтобы получить достижение "Крутой котик"</p>
 					{:else}
 					<p>Получено достижение: Крутой Котик</p>
 					<img
 					src="/files/coolcat.jpg"
-					width="30"
-					height="24"
+					width="500"
+					height="500"
 					class="card-img-top"
 					alt="крутой котик"
 				/>
