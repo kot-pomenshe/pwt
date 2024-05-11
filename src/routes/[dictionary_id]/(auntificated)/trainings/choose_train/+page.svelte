@@ -100,7 +100,18 @@
 								>
 							</div>
 						</div>
-
+						<div class="card">
+							<img src="/files/cards.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
+								<h5 class="card-title">Карточки</h5>
+								<p class="card-text">
+									Тренировка методом словарных карточек c элементами геймификации.
+								</p>
+								<a href="./cards_game/{current_cathegory}" class="btn btn-primary"
+									>Приступить</a
+								>
+							</div>
+						</div>
 						<div class="card">
 							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
@@ -129,7 +140,19 @@
 								>
 							</div>
 						</div>
-
+						<div class="card">
+							<img src="/files/tw.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
+								<h5 class="card-title">Перевод — Слово</h5>
+								<p class="card-text">
+									Тренировка методом Перевод — Слово с элементами геймификации.
+								</p>
+								<a
+									href="./translation_word_game/{current_cathegory}"
+									class="btn btn-primary">Приступить</a
+								>
+							</div>
+						</div>
 						<div class="card">
 							<img src="/files/wtwt.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">

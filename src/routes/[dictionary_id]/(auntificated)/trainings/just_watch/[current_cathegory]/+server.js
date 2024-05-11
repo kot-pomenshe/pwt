@@ -1,5 +1,4 @@
 import { json } from '@sveltejs/kit';
-import trainings from '$lib/server/models/trainings';
 import statistics from '$lib/server/models/statistics';
 
 /** @type {import('./$types').RequestHandler} */
