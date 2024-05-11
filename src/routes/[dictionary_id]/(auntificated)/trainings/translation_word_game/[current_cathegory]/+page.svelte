@@ -81,7 +81,7 @@
 		for (let i of words) {
 			i.picturepath = '';
 		}
-		console.log(`EMPTY Picture path arr: `, words);
+
 		await fetch(window.location.href, 
 		{method: "POST", body: JSON.stringify(words)});
 		goto(`../choose_train`);
