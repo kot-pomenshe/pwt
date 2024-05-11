@@ -15,6 +15,13 @@
 	let total_score = score.total_score;
 	let trainings_amount = score.trainings_amount;
 	//console.log(`Score Show Card: `, total_score, trainings_amount);
+
+	import Modal from './Modal.svelte';
+	let showModal = false;
+
+	function callbackFunction() {
+		 dispatch('finish')
+	}
 </script>
 
 <h1>Результаты</h1>
@@ -62,31 +69,37 @@
 			{/each}
 			<br />
 			<span class="badge bg-secondary">{correct_answers}/{words.length}</span>
-		<div class="gamification-info">
-			{#if correct_answers > words_amount/2}
+
+			<div class="gamification-info">
+				{#if correct_answers > words_amount / 2}
 					<p>Отличный результат, так держать!</p>
-					{:else}
+				{:else}
 					<p>Не расстраивайся, в следующий раз сможешь лучше</p>
-			{/if}
-			<p>Начислено {correct_answers*2 + 5}XP за тренировку</p>
-			<p>Всего баллов: {total_score + correct_answers*2 + 5}</p>
-			<p>Пройдено тренировок: {trainings_amount + 1}</p>
-			{#if trainings_amount+1 < 10}
-			<p>Пройдите ещё {10 - (trainings_amount + 1)}, чтобы получить достижение "Крутой котик"</p>
+				{/if}
+				<p>Начислено {correct_answers * 2 + 5}XP за тренировку</p>
+				<p>Всего баллов: {total_score + correct_answers * 2 + 5}</p>
+
+				<Modal bind:showModal on:notify={callbackFunction}>
+					<p>Пройдено тренировок: {trainings_amount + 1}</p>
+					{#if trainings_amount + 1 < 10}
+						<p>
+							Пройдите ещё {10 - (trainings_amount + 1)}, чтобы получить достижение
+							"Крутой котик"
+						</p>
 					{:else}
-					<p>Получено достижение: Крутой Котик</p>
-					<img
-					src="/files/coolcat.jpg"
-					width="500"
-					height="500"
-					class="card-img-top"
-					alt="крутой котик"
-				/>
-			{/if}
-			
-		</div>
+						<p>Получено достижение: Крутой Котик</p>
+						<img
+							src="/files/coolcat.jpg"
+							width="500"
+							height="500"
+							class="card-img-top"
+							alt="крутой котик"
+						/>
+					{/if}
+				</Modal>
+			</div>
 			<div class="d-flex">
-				<button on:click={() => dispatch('finish')} class="btn btn-primary">Далее</button>
+				<button on:click={() => (showModal = true)} class="btn btn-primary">Далее</button>
 			</div>
 		</div>
 	</div>
