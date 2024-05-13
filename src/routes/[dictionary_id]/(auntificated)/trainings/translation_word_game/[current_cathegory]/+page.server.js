@@ -21,7 +21,7 @@ export async function load({ locals, params}) {
 	let total_score = await statistics.get_total_score({user_id, dictionary_id});
     let trainings_amount = await statistics.get_trainings_amount({user_id, dictionary_id});
     console.log(`SCORE page server js: `, total_score, trainings_amount);
-    trainings_amount = trainings_amount + 1;
+    //trainings_amount = trainings_amount + 1;
     //statistics.update_score({user_id, dictionary_id, total_score, trainings_amount});
 	//console.log(`SNDwrdsmap `, second_words);
 	let score = {total_score, trainings_amount}
