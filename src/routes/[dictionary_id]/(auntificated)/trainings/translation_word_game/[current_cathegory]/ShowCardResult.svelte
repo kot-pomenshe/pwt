@@ -14,7 +14,7 @@
 	//console.log(`SCORE Show Card: `, score);
 	let total_score = score.total_score;
 	let trainings_amount = score.trainings_amount + 1;
-	//console.log(`Score Show Card: `, total_score, trainings_amount);
+	console.log(`Score Show Result: `, trainings_amount);
 
 	import Modal from './Modal.svelte';
 	let showModal = false;
