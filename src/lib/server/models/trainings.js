@@ -38,6 +38,25 @@ async function get_words20 ({ user_id, dictionary_id, current_cathegory }) {
 	return true;
 }
 
+async function get_words50 ({ user_id, dictionary_id, current_cathegory }) {
+	if (current_cathegory == 0){
+		const [rows0, fields0] = await pool.execute(
+			'SELECT `translation`.`translation_id` AS translation_id, `has_studied`, `trainings_amount`, `mistakes_amount`, `word1`.`name` AS `name1`, `word2`.`name` AS `name2`, `transcription`, `context`, `picturepath` FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` WHERE `user_id` = ? AND `dictionary_id` = ?  ORDER BY `user_has_translation`.`trainings_amount` LIMIT 50',
+			[user_id, dictionary_id],
+		);
+		return { words: rows0 };
+	} else {
+		const [rows0, fields0] = await pool.execute(
+			'SELECT `translation`.`translation_id` AS translation_id, `has_studied`, `trainings_amount`, `mistakes_amount`, `word1`.`name` AS `name1`, `word2`.`name` AS `name2`, `transcription`, `context`, `picturepath` FROM `user_has_translation` INNER JOIN `translation` USING(translation_id) INNER JOIN `word` AS `word1` ON `translation`.word1_id = `word1`.`word_id` INNER JOIN `word` AS `word2` ON `translation`.word2_id = `word2`.`word_id` INNER JOIN `translation_has_cathegory` ON `translation_has_cathegory`.`translation_id` = `translation`.`translation_id` WHERE `user_id` = ? AND `dictionary_id` = ? AND `cathegory_id` = ?  ORDER BY `user_has_translation`.`trainings_amount` LIMIT 50',
+			[user_id, dictionary_id, current_cathegory],
+		);
+		return { words: rows0 };
+	}
+	
+	console.log(`AND has_studied = 0 `, user_id);
+	return true;
+}
+
 async function get_second_words({ user_id, dictionary_id }) {
 	console.log(`In get second words: User ID: `, user_id);
 	console.log(`In get second words: Dictionary ID: `, dictionary_id);
@@ -111,4 +130,4 @@ async function get_statistics({user_id, dictionary_id}) {
 	return rows5;
 }
 
-export default { get_words, get_words20, set_statistics, get_statistics, update_word_statistics, get_second_words, get_first_words };
+export default { get_words, get_words20, get_words50, set_statistics, get_statistics, update_word_statistics, get_second_words, get_first_words };

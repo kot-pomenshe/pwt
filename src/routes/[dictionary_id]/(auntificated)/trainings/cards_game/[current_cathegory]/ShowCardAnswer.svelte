@@ -12,7 +12,7 @@
 			<h5 class="card-title">{word.name1}</h5>
 			<p class="card-text">[{word.transcription}]</p>
 			<h5 class="card-title">{word.name2}</h5>
-			<h7 class="card-title">{word.context}.</h7>
+			<h7 class="card-title">{word.context}</h7>
 			<hr>
 			<div>
 			{#if word.answer}

@@ -13,7 +13,7 @@
 	}
 	//console.log(`SCORE Show Card: `, score);
 	let total_score = score.total_score;
-	let trainings_amount = score.trainings_amount;
+	let trainings_amount = score.trainings_amount + 1;
 	//console.log(`Score Show Card: `, total_score, trainings_amount);
 
 	import Modal from './Modal.svelte';
@@ -88,10 +88,10 @@
 
 				<Modal bind:showModal on:notify={callbackFunction}>
 					<div class="card-body">
-						<h6>Пройдено тренировок: {trainings_amount + 1}</h6>
-						{#if trainings_amount + 1 < 10}
+						<h6>Пройдено тренировок: {trainings_amount}</h6>
+						{#if trainings_amount < 10}
 							<p>
-								Пройдите ещё {10 - (trainings_amount + 1)}, чтобы получить
+								Пройдите ещё {10 - trainings_amount}, чтобы получить
 								достижение "Крутой котик"
 							</p>
 						{:else}

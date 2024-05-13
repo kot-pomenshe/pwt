@@ -19,7 +19,7 @@
 	<div on:click|stopPropagation>
 		<slot />
 		<!-- svelte-ignore a11y-autofocus -->
-		<button autofocus on:click={() => dialog.close()} class="btn btn-primary btn-margin">Круто!</button>
+		<button autofocus on:click={() => dialog.close()} class="btn btn-primary">Круто!</button>
 	</div>
 </dialog>
 
@@ -36,5 +36,19 @@
 	.btn-margin{
 		margin-left: 1rem;
 		margin-top: 0.5rem;
+	}
+	.btn {
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 1rem;
+		margin-top: 1rem;
+		--bs-btn-color: #f0f0f0;
+		--bs-btn-bg: #009d9e;
+		--bs-btn-border-color: #f0f0f0;
+	}
+	.btn:hover {
+		color: #161616;
+		background-color: #7cc1ac;
+		border-color: #009d9e;
 	}
 </style>
