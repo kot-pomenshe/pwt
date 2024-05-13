@@ -44,9 +44,14 @@ async function create({ login, password, email }) {
 	]);
 
 	const dictionary_id = '1';
+	const dictionary_id2 = '10';
 	await pool.execute(
 		'INSERT INTO `user_has_dictionary`(`user_id`, `dictionary_id`, `total_score`, `trainings_amount`) VALUES (?,?,0,0)',
 		[user_id, dictionary_id],
+	);
+	await pool.execute(
+		'INSERT INTO `user_has_dictionary`(`user_id`, `dictionary_id`, `total_score`, `trainings_amount`) VALUES (?,?,0,0)',
+		[user_id, dictionary_id2],
 	);
 
 	const cathegory_id = 3;

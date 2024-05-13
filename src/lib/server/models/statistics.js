@@ -43,7 +43,7 @@ async function get_trainings_amount({user_id, dictionary_id}) {
 		user_id,
 		dictionary_id,
 	]);
-	console.log(`rows7: `, rows7[0].trainings_amount);
+	console.log(`кол-во тренировок: `, rows7[0].trainings_amount);
 	let tr_am=rows7[0].trainings_amount;
 	return tr_am;
 }
