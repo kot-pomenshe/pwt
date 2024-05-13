@@ -76,6 +76,10 @@
 		current.variants = fill_variants(words[current.word].name2);
 	}
 	async function finish() {
+		for (let i of words) {
+			i.picturepath = '';
+		}
+		
 		await fetch(window.location.href, 
 		{method: "POST", body: JSON.stringify(words)});
 		goto(`../choose_train`);
