@@ -16,7 +16,7 @@
 
 	function remember() {
 		words[current_word].answer = true;
-		words[current_word].has_studied = true;
+		//words[current_word].has_studied = true;
 		current_step = 1;
 	}
 	function dontremember() {
