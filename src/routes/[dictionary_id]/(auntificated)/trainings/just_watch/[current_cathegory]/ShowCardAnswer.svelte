@@ -35,6 +35,7 @@
 
 	.btn,
 	.btn-primary {
+		margin-top: 0.5rem;
 		--bs-btn-color: #f0f0f0;
 		--bs-btn-bg: #009d9e;
 		--bs-btn-border-color: #f0f0f0;

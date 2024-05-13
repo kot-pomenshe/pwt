@@ -1,10 +1,32 @@
 <script>
 	export let word, variants;
+	import { onDestroy } from 'svelte';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
 	let selected_answer;
 	//$: console.log(`sel answ `, selected_answer);
+	let elapsed = 0;
+	let duration = 10000;
+
+	let last_time = window.performance.now();
+	let frame;
+
+	(function update() {
+		frame = requestAnimationFrame(update);
+
+		const time = window.performance.now();
+		elapsed += Math.min(time - last_time, duration - elapsed);
+		last_time = time;
+
+		if (duration - elapsed == 0) {
+			dispatch('nextword', '');
+		}
+	})();
+
+	onDestroy(() => {
+		cancelAnimationFrame(frame);
+	});
 </script>
 
 <h1>Выберите ответ</h1>
@@ -25,8 +47,8 @@
 				<div class="inlb_right">
 					{#each variants as variant}
 						<ul class="list-group list-group-horizontal">
-							<li class="list-group-item fixed_li">
-								<label>
+							<label>
+								<li class="list-group-item fixed_li">
 									<input
 										class="form-check-input"
 										type="radio"
@@ -35,12 +57,17 @@
 										value={variant}
 									/>
 									{variant}
-								</label>
-							</li>
+								</li>
+							</label>
 						</ul>
 					{/each}
 				</div>
 			</div>
+		</div>
+		<div class="card-body">
+			Осталось:
+			<div>{(duration / 1000 - elapsed / 1000).toFixed(1)} секунд</div>
+			<progress value={1 - elapsed / duration} />
 		</div>
 		<div class="d-flex">
 			<button
@@ -85,10 +112,10 @@
 		background-color: #7cc1ac;
 		border-color: #009d9e;
 	}
-	.btn[disabled]{
+	.btn[disabled] {
 		background: #7cc1ac;
 		border-color: #009d9e;
-	} 
+	}
 	.fixed_li {
 		width: 20rem;
 	}

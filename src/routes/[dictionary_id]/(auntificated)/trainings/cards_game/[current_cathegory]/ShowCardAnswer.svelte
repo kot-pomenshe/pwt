@@ -13,26 +13,33 @@
 			<p class="card-text">[{word.transcription}]</p>
 			<h5 class="card-title">{word.name2}</h5>
 			<h7 class="card-title">{word.context}.</h7>
+			<hr>
+			<div>
 			{#if word.answer}
-				<img
-					src="/icons/check-circle-fill.svg"
-					width="30"
-					height="24"
-					class="card-img-top"
-					alt="верно"
-				/>
-				<p>Отличный результат! Так держать :)</p>
-				<p class="card-text green">+1XP за верный ответ</p>
+				<div class="flex">
+					<img
+						src="/icons/check-circle-fill.svg"
+						width="30"
+						height="24"
+						class="icon"
+						alt="верно"
+					/>
+					<p>Отличный результат! Так держать :)</p>
+				</div>
+				<p class="card-text green padding-bottom">+1XP за верный ответ</p>
 			{:else}
-				<img
-					src="/icons/x-circle-fill.svg"
-					width="30"
-					height="24"
-					class="card-img-top"
-					alt="неверно"
-				/>
-				<p>Не расстраивайся, в следующий раз обязательно получится!</p>
+				<div class="flex ">
+					<img
+						src="/icons/x-circle-fill.svg"
+						width="30"
+						height="24"
+						class="icon"
+						alt="неверно"
+					/>
+					<p class="card-text padding-bottom">Не расстраивайся, в следующий раз обязательно получится!</p>
+				</div>
 			{/if}
+		</div>
 			<button on:click={() => dispatch('next')} class="btn btn-primary">Далее</button>
 		</div>
 	</div>
@@ -67,5 +74,18 @@
 
 	body {
 		background-color: #f0f0f0;
+	}
+	.green {
+		color: #009d9e;
+	}
+	.flex {
+		display: flex;
+		justify-content: flex-start;
+	}
+	.icon {
+		margin-right: 5px;
+	}
+	.padding-bottom{
+		padding-bottom: 1rem;
 	}
 </style>

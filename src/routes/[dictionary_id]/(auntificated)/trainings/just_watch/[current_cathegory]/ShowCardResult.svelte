@@ -68,6 +68,7 @@
 		--bs-btn-border-color: #f0f0f0;
 		margin-left: auto;
 		margin-right: auto;
+		margin-top: 0.5rem;
 	}
 
 	.btn:hover {

@@ -26,8 +26,8 @@
 				<div class="inlb_right">
 					{#each variants as variant}
 						<ul class="list-group list-group-horizontal">
-							<li class="list-group-item fixed_li">
-								<label>
+							<label
+								><li class="list-group-item fixed_li">
 									<input
 										class="form-check-input"
 										type="radio"
@@ -36,8 +36,8 @@
 										value={variant}
 									/>
 									{variant}
-								</label>
-							</li>
+								</li>
+							</label>
 						</ul>
 					{/each}
 				</div>
@@ -86,10 +86,10 @@
 		background-color: #7cc1ac;
 		border-color: #009d9e;
 	}
-	.btn[disabled]{
+	.btn[disabled] {
 		background: #7cc1ac;
 		border-color: #009d9e;
-	} 
+	}
 	.fixed_li {
 		width: 20rem;
 	}

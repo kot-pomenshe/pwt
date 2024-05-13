@@ -100,7 +100,7 @@
 								>
 							</div>
 						</div>
-						<div class="card">
+						<div class="card card-game">
 							<img src="/files/cards.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Карточки</h5>
@@ -140,7 +140,7 @@
 								>
 							</div>
 						</div>
-						<div class="card">
+						<div class="card card-game">
 							<img src="/files/tw.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Перевод — Слово</h5>
@@ -244,6 +244,9 @@
 		background: #d5ece6;
 		width: 21rem;
 		margin: 10pt;
+	}
+	.card-game{
+		background-color: #9ccdcd;
 	}
 	.btn,
 	.btn-primary {

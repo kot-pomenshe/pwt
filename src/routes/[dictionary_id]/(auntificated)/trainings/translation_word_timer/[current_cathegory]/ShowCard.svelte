@@ -5,7 +5,7 @@
 	const dispatch = createEventDispatcher();
 
 	let selected_answer;
-	
+
 	let elapsed = 0;
 	let duration = 10000;
 
@@ -19,7 +19,9 @@
 		elapsed += Math.min(time - last_time, duration - elapsed);
 		last_time = time;
 
-		if ((duration-elapsed) == 0) { dispatch('nextword', '')}
+		if (duration - elapsed == 0) {
+			dispatch('nextword', '');
+		}
 	})();
 
 	onDestroy(() => {
@@ -45,8 +47,8 @@
 				<div class="inlb_right">
 					{#each variants as variant}
 						<ul class="list-group list-group-horizontal">
-							<li class="list-group-item fixed_li">
-								<label>
+							<label>
+								<li class="list-group-item fixed_li">
 									<input
 										class="form-check-input"
 										type="radio"
@@ -55,8 +57,8 @@
 										value={variant}
 									/>
 									{variant}
-								</label>
-							</li>
+								</li>
+							</label>
 						</ul>
 					{/each}
 				</div>
@@ -64,7 +66,7 @@
 		</div>
 		<div class="card-body">
 			Осталось:
-			<div>{(duration / 1000 - elapsed / 1000).toFixed(1)} секунд </div>
+			<div>{(duration / 1000 - elapsed / 1000).toFixed(1)} секунд</div>
 			<progress value={1 - elapsed / duration} />
 		</div>
 		<div class="d-flex">
@@ -110,10 +112,10 @@
 		background-color: #7cc1ac;
 		border-color: #009d9e;
 	}
-	.btn[disabled]{
+	.btn[disabled] {
 		background: #7cc1ac;
 		border-color: #009d9e;
-	} 
+	}
 	.fixed_li {
 		width: 20rem;
 	}
@@ -126,10 +128,10 @@
 	.inlb_right {
 		float: right;
 	}
-	progress{
-		background-color:#009d9e;
+	progress {
+		background-color: #009d9e;
 		border: 1px;
-  		height: 9px;
-  		border-radius: 10vw;
+		height: 9px;
+		border-radius: 10vw;
 	}
 </style>

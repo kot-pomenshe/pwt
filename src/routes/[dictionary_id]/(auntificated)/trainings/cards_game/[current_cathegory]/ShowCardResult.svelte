@@ -3,9 +3,11 @@
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
+	let words_amount = 0;
 	let correct_answers = 0;
 	for (let i of words) {
 		if (i.answer) correct_answers += 1;
+		words_amount += 1;
 	}
 </script>
 
@@ -13,43 +15,57 @@
 <div class="d-flex">
 	<div class="card" style="width: 40rem;">
 		<div class="card-body">
-			{#each words as word}
-				<ol class="list-group list-group-horizontal">
-					<li class="list-group-item fixed_li">{word.name1}</li>
-					<li class="list-group-item">
-						<img
-							src="/icons/arrow-right.svg"
-							width="30"
-							height="24"
-							class="card-img-top"
-							alt="->"
-						/>
-					</li>
-					<li class="list-group-item fixed_li">{word.name2}</li>
-					{#if !word.answer}
-						<li class="list-group-item list-group-item-danger">
+			<div class="margin-bottom">
+				{#each words as word}
+					<ol class="list-group list-group-horizontal">
+						<li class="list-group-item fixed_li">{word.name1}</li>
+						<li class="list-group-item">
 							<img
-								src="/icons/x-circle-fill.svg"
+								src="/icons/arrow-right.svg"
 								width="30"
 								height="24"
 								class="card-img-top"
-								alt="не верно"
+								alt="->"
 							/>
 						</li>
-					{:else}
-						<li class="list-group-item list-group-item-success">
-							<img
-								src="/icons/check-circle-fill.svg"
-								width="30"
-								height="24"
-								class="card-img-top"
-								alt="верно"
-							/>
-						</li>
-					{/if}
-				</ol>
-			{/each}
-			<span class="badge bg-secondary">{correct_answers}/{words.length}</span>
+						<li class="list-group-item fixed_li">{word.name2}</li>
+						{#if !word.answer}
+							<li class="list-group-item list-group-item-danger">
+								<img
+									src="/icons/x-circle-fill.svg"
+									width="30"
+									height="24"
+									class="card-img-top"
+									alt="не верно"
+								/>
+							</li>
+						{:else}
+							<li class="list-group-item list-group-item-success">
+								<img
+									src="/icons/check-circle-fill.svg"
+									width="30"
+									height="24"
+									class="card-img-top"
+									alt="верно"
+								/>
+							</li>
+						{/if}
+					</ol>
+				{/each}
+			</div>
+			<div>
+				{#if correct_answers > words_amount / 2}
+					<div class="d-flex">
+						<span class="badge bg-secondary">{correct_answers}/{words.length}</span>
+						<p class="margin-top">Отличный результат, так держать!</p>
+					</div>
+				{:else}
+					<div class="d-flex">
+						<span class="badge bg-secondary">{correct_answers}/{words.length}</span>
+						<p class="margin-top">Не расстраивайся, в следующий раз сможешь лучше</p>
+					</div>
+				{/if}
+			</div>
 			<div class="d-flex">
 				<button on:click={() => dispatch('finish')} class="btn btn-primary">Далее</button>
 			</div>
@@ -79,7 +95,7 @@
 		width: 15rem;
 	}
 	.badge {
-		margin-top: 1rem;
+		margin-right: 0.5rem;
 		margin-bottom: 1rem;
 	}
 	.btn,
@@ -95,6 +111,10 @@
 		color: #161616;
 		background-color: #7cc1ac;
 		border-color: #009d9e;
+	}
+
+	.margin-bottom {
+		margin-bottom: 1.5rem;
 	}
 
 	body {
