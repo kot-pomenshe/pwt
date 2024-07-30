@@ -34,6 +34,7 @@ export async function POST({request, locals, cookies, params}) {
     if (! user_id) user_id = 3;
 
     let trainings_amount = await statistics.get_trainings_amount({user_id, dictionary_id});
+    trainings_amount = trainings_amount + 1;
 
     let total_score = await statistics.get_total_score({user_id, dictionary_id});
     trainings.set_statistics(locals.session, dictionary_id, date, result);
