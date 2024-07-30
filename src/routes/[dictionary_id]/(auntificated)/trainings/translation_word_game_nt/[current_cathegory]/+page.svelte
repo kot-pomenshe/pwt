@@ -6,7 +6,7 @@
 	export let form;
 
 	export let data;
-	let { words, second_words, score } = data;
+	let { words, second_words, score, time_start } = data;
 
 	words = words.map((word) => {
 		return { ...word, answer: false, selected_answer: ''};
@@ -83,7 +83,7 @@
 		}
 
 		await fetch(window.location.href, 
-		{method: "POST", body: JSON.stringify(words)});
+		{method: "POST", body: JSON.stringify({words, time_start})});
 		goto(`../choose_train`);
 	}
 

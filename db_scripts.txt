@@ -184,6 +184,19 @@ ALTER TABLE `user_has_dictionary` ADD `total_score` INT NULL AFTER `dictionary_i
 
 ALTER TABLE `user_has_dictionary` ADD `trainings_amount` INT NULL AFTER `total_score`;
 
+CREATE TABLE IF NOT EXISTS `personal_word_trainer`.`research_stat` (
+ `research_stat_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT ,
+ `user_id` INT NOT NULL ,
+ `last_training_time` DATETIME NOT NULL ,
+ `training_type` TINYINT NOT NULL ,
+ `trainings_amount` INT NULL DEFAULT NULL ,
+ `first_training_time` FLOAT NULL DEFAULT NULL
+);
+
+ALTER TABLE `research_stat`
+ADD FOREIGN KEY (user_id) REFERENCES `user` (user_id);
+ALTER TABLE `research_stat` ADD `mistakes_amount` TINYINT NULL AFTER `first_training_time`;
+
 INSERT INTO `language`( `name`) VALUES ("English");
 INSERT INTO `language`( `name`) VALUES ("Russian");
 INSERT INTO `dictionary`(`name`, `id_language1`, `id_language2`) VALUES ("English -> Russian", "1", "2");

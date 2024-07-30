@@ -60,6 +60,18 @@ async function update_score({
 	return true;
 }
 
+async function set_research_stat({
+	user_id, last_training_time, training_type, trainings_amount, first_training_time, mistakes_amount
+}) {
+	await pool.execute(
+		'INSERT INTO `research_stat`(`user_id`, `last_training_time`, `training_type`, `trainings_amount`, `first_training_time`, `mistakes_amount`) VALUES (?,?,?,?,?,?)',
+		[
+			user_id, last_training_time, training_type, trainings_amount, first_training_time, mistakes_amount
+		],
+	);
+	return true;
+}
+
 export default {
-	get_statistics, get_total_score, get_trainings_amount, update_score,
+	get_statistics, get_total_score, get_trainings_amount, update_score, set_research_stat,
 };

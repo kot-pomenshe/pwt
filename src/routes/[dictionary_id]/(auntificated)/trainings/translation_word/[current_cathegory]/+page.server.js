@@ -17,6 +17,7 @@ export async function load({ locals, params}) {
 		
 		//throw redirect(303, '../trainings/choose_train');
 	}
+	let time_start = Date.now() / 1000;
 	//console.log(`SNDwrdsmap `, second_words);
-	return {words, second_words};
+	return {words, second_words, time_start};
 }

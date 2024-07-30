@@ -25,6 +25,6 @@ export async function load({ locals, params}) {
     //statistics.update_score({user_id, dictionary_id, total_score, trainings_amount});
 	//console.log(`SNDwrdsmap `, second_words);
 	let score = {total_score, trainings_amount}
-	
-	return {words, second_words, score};
+	let time_start = Date.now() / 1000;
+	return {words, second_words, score, time_start};
 }
