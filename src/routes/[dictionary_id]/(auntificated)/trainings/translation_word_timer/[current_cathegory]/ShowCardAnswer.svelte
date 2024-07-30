@@ -13,24 +13,29 @@
 			<p class="card-text">{word.transcription}</p>
 			<h4 class="card-title">{word.name1}</h4>
 			<h7 class="card-title">{word.context}</h7>
+			<hr />
 			{#if word.answer}
-				<img
-					src="/icons/check-circle-fill.svg"
-					width="30"
-					height="24"
-					class="card-img-top"
-					alt="верно"
-				/>
-				<p class="card-text green">Ваш ответ: {word.selected_answer}</p>
+				<div class="flex padding-bottom">
+					<img
+						src="/icons/check-circle-fill.svg"
+						width="30"
+						height="24"
+						class="icon"
+						alt="верно"
+					/>
+					<p class="card-text green">Ваш ответ: {word.selected_answer}</p>
+				</div>
 			{:else}
-				<img
-					src="/icons/x-circle-fill.svg"
-					width="30"
-					height="24"
-					class="card-img-top"
-					alt="неверно"
-				/>
-				<p class="card-text red">Ваш ответ: {word.selected_answer}</p>
+				<div class="flex padding-bottom">
+					<img
+						src="/icons/x-circle-fill.svg"
+						width="30"
+						height="24"
+						class="icon"
+						alt="неверно"
+					/>
+					<p class="card-text red">Ваш ответ: {word.selected_answer}</p>
+				</div>
 			{/if}
 		</div>
 		<div class="d-flex">
