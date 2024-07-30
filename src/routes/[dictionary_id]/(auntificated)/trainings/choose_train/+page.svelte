@@ -76,7 +76,7 @@
 				<div class="inlb_right">
 					<div class="flex-card">
 						<div class="card">
-							<img src="/files/cards.jpg" class="card-img-top" alt="..." />
+							<img src="/files/justwatch.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Просто смотрю</h5>
 								<p class="card-text">
@@ -101,7 +101,7 @@
 							</div>
 						</div>
 						<div class="card card-game">
-							<img src="/files/cards.jpg" class="card-img-top" alt="..." />
+							<img src="/files/cardsgame.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Карточки</h5>
 								<p class="card-text">
@@ -128,7 +128,7 @@
 							</div>
 						</div>
 						<div class="card">
-							<img src="/files/twt.jpg" class="card-img-top" alt="..." />
+							<img src="/files/tw_timer.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Перевод — Слово</h5>
 								<p class="card-text">
@@ -143,7 +143,7 @@
 							</div>
 						</div>
 						<div class="card card-game">
-							<img src="/files/tw.jpg" class="card-img-top" alt="..." />
+							<img src="/files/tw_game.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Перевод — Слово</h5>
 								<p class="card-text">
