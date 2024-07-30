@@ -113,20 +113,6 @@
 							</div>
 						</div>
 						<div class="card">
-							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
-							<div class="card-body">
-								<h5 class="card-title">Слово — Перевод</h5>
-								<p class="card-text">
-									Тренировка методом Слово — Перевод. К каждому слову на выбор
-									даётся 4 варианта перевода, необходимо выбрать верный.
-								</p>
-								<a
-									href="./word_translation/{current_cathegory}"
-									class="btn btn-primary">Приступить</a
-								>
-							</div>
-						</div>
-						<div class="card">
 							<img src="/files/tw.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
 								<h5 class="card-title">Перевод — Слово</h5>
@@ -148,7 +134,48 @@
 									Тренировка методом Перевод — Слово с элементами геймификации.
 								</p>
 								<a
+									href="./translation_word_game_nt/{current_cathegory}"
+									class="btn btn-primary">Приступить</a
+								>
+							</div>
+						</div>
+						<div class="card">
+							<img src="/files/twt.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
+								<h5 class="card-title">Перевод — Слово (timer)</h5>
+								<p class="card-text">
+									Тренировка методом Перевод — Слово. На каждый ответ даётся 10
+									секунд.
+								</p>
+								<a
+									href="./translation_word_timer/{current_cathegory}"
+									class="btn btn-primary">Приступить</a
+								>
+							</div>
+						</div>
+						<div class="card card-game">
+							<img src="/files/tw.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
+								<h5 class="card-title">Перевод — Слово</h5>
+								<p class="card-text">
+									Тренировка методом Перевод — Слово с элементами геймификации и ограничением времени на ответ.
+								</p>
+								<a
 									href="./translation_word_game/{current_cathegory}"
+									class="btn btn-primary">Приступить</a
+								>
+							</div>
+						</div>
+						<div class="card">
+							<img src="/files/wt.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
+								<h5 class="card-title">Слово — Перевод</h5>
+								<p class="card-text">
+									Тренировка методом Слово — Перевод. К каждому слову на выбор
+									даётся 4 варианта перевода, необходимо выбрать верный.
+								</p>
+								<a
+									href="./word_translation/{current_cathegory}"
 									class="btn btn-primary">Приступить</a
 								>
 							</div>
@@ -178,20 +205,6 @@
 								</p>
 								<a
 									href="./word_translation_timer/{current_cathegory}"
-									class="btn btn-primary">Приступить</a
-								>
-							</div>
-						</div>
-						<div class="card">
-							<img src="/files/twt.jpg" class="card-img-top" alt="..." />
-							<div class="card-body">
-								<h5 class="card-title">Перевод — Слово (timer)</h5>
-								<p class="card-text">
-									Тренировка методом Перевод — Слово. На каждый ответ даётся 10
-									секунд.
-								</p>
-								<a
-									href="./translation_word_timer/{current_cathegory}"
 									class="btn btn-primary">Приступить</a
 								>
 							</div>
