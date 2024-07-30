@@ -78,4 +78,11 @@
 	.red {
 		color: #cf0303;
 	}
+	.flex {
+		display: flex;
+		justify-content: flex-start;
+	}
+	.padding-bottom {
+		padding-bottom: 1rem;
+	}
 </style>
