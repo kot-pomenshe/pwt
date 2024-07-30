@@ -80,7 +80,7 @@
 							<div class="card-body">
 								<h5 class="card-title">Просто смотрю</h5>
 								<p class="card-text">
-									Здесь ты можешь ознакомиться со словами. Просто смотри на карточки и запоминай.
+									Здесь ты можешь ознакомиться со словами и изучить их. Никакого тестирования, просто смотри на карточки и запоминай.
 								</p>
 								<a href="./just_watch/{current_cathegory}" class="btn btn-primary"
 									>Приступить</a
@@ -105,7 +105,8 @@
 							<div class="card-body">
 								<h5 class="card-title">Карточки</h5>
 								<p class="card-text">
-									Тренировка методом словарных карточек c элементами геймификации.
+									Смотрите на карточки и
+									отмечаете те слова, которые уже запомнили. Тренировка с элементами геймификации.
 								</p>
 								<a href="./cards_game/{current_cathegory}" class="btn btn-primary"
 									>Приступить</a
@@ -126,25 +127,13 @@
 								>
 							</div>
 						</div>
-						<div class="card card-game">
-							<img src="/files/tw.jpg" class="card-img-top" alt="..." />
-							<div class="card-body">
-								<h5 class="card-title">Перевод — Слово</h5>
-								<p class="card-text">
-									Тренировка методом Перевод — Слово с элементами геймификации.
-								</p>
-								<a
-									href="./translation_word_game_nt/{current_cathegory}"
-									class="btn btn-primary">Приступить</a
-								>
-							</div>
-						</div>
 						<div class="card">
 							<img src="/files/twt.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
-								<h5 class="card-title">Перевод — Слово (timer)</h5>
+								<h5 class="card-title">Перевод — Слово</h5>
 								<p class="card-text">
-									Тренировка методом Перевод — Слово. На каждый ответ даётся 10
+									К каждому переводу на выбор
+									даётся 4 варианта слова, необходимо выбрать верный. На ответ даётся 7
 									секунд.
 								</p>
 								<a
@@ -158,10 +147,11 @@
 							<div class="card-body">
 								<h5 class="card-title">Перевод — Слово</h5>
 								<p class="card-text">
-									Тренировка методом Перевод — Слово с элементами геймификации и ограничением времени на ответ.
+									К каждому переводу на выбор
+									даётся 4 варианта слова, необходимо выбрать верный. Тренировка с элементами геймификации.
 								</p>
 								<a
-									href="./translation_word_game/{current_cathegory}"
+									href="./translation_word_game_nt/{current_cathegory}"
 									class="btn btn-primary">Приступить</a
 								>
 							</div>
@@ -194,7 +184,6 @@
 								>
 							</div>
 						</div>
-
 						<div class="card">
 							<img src="/files/wtt.jpg" class="card-img-top" alt="..." />
 							<div class="card-body">
@@ -205,6 +194,19 @@
 								</p>
 								<a
 									href="./word_translation_timer/{current_cathegory}"
+									class="btn btn-primary">Приступить</a
+								>
+							</div>
+						</div>
+						<div class="card card-game">
+							<img src="/files/tw.jpg" class="card-img-top" alt="..." />
+							<div class="card-body">
+								<h5 class="card-title">Перевод — Слово</h5>
+								<p class="card-text">
+									Тренировка методом Перевод — Слово с элементами геймификации и ограничением времени на ответ.
+								</p>
+								<a
+									href="./translation_word_game/{current_cathegory}"
 									class="btn btn-primary">Приступить</a
 								>
 							</div>
@@ -259,7 +261,7 @@
 		margin: 10pt;
 	}
 	.card-game{
-		background-color: #9ccdcd;
+		/* background-color: #9ccdcd; */
 	}
 	.btn,
 	.btn-primary {

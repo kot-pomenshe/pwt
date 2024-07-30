@@ -7,7 +7,7 @@
 	let selected_answer;
 
 	let elapsed = 0;
-	let duration = 10000;
+	let duration = 7000;
 
 	let last_time = window.performance.now();
 	let frame;
